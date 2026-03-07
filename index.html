@@ -1876,7 +1876,7 @@
         <div class="sec-header light">
             <span class="sec-eyebrow">O que tratamos</span>
             <h2>Nossas Especialidades</h2>
-            <p>Procedimentos cirúrgicos avançados para restaurar equilíbrio funcional e harmonia facial.</p>
+            <p>Procedimentos cirúrgicos avançados para restaurar equilíbrio funcional e estética facial.</p>
         </div>
     </div>
     <div class="esp-grid">
@@ -1914,6 +1914,10 @@
             <img class="esp-card-img" src="esp-implantes.jpg" alt="Implantes Dentários" style="object-position: center 30%;">
             <div class="esp-card-overlay"></div>
             <div class="esp-card-tag">Especialidade</div>
+            <div style="position:absolute;top:50%;left:12px;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;z-index:3;">
+                <span style="background:rgba(201,168,76,0.9);color:#000;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:0.1em;">ANTES</span>
+                <span style="background:rgba(201,168,76,0.9);color:#000;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:0.1em;margin-top:60px;">DEPOIS</span>
+            </div>
             <div class="esp-card-content">
                 <div class="esp-card-num">04 — IMPLANTES</div>
                 <h3>Implantes Dentários</h3>
@@ -1921,7 +1925,7 @@
             </div>
         </div>
         <div class="esp-card">
-            <img class="esp-card-img" src="esp-apneia.png" alt="Apneia do Sono">
+            <img class="esp-card-img" src="esp-apneia.jpg" alt="Apneia do Sono">
             <div class="esp-card-overlay"></div>
             <div class="esp-card-tag">Especialidade</div>
             <div class="esp-card-content">
@@ -1948,6 +1952,16 @@
                 <div class="esp-card-num">07 — ESTÉTICA</div>
                 <h3>Lipo Papada</h3>
                 <p>Procedimento minimamente invasivo para remoção de gordura localizada na região da papada, definindo o contorno facial e o pescoço com resultado natural.</p>
+            </div>
+        </div>
+        <div class="esp-card">
+            <img class="esp-card-img" src="esp-trauma.jpg" alt="Traumas Faciais" style="object-position: center center;">
+            <div class="esp-card-overlay"></div>
+            <div class="esp-card-tag">Especialidade</div>
+            <div class="esp-card-content">
+                <div class="esp-card-num">08 — TRAUMA</div>
+                <h3>Traumas Faciais</h3>
+                <p>Tratamento cirúrgico de fraturas dos ossos da face — zigoma, mandíbula, maxila e órbita — com reconstrução precisa e recuperação funcional e estética.</p>
             </div>
         </div>
     </div>
@@ -2566,49 +2580,49 @@
         </div>
         <div class="faq-list">
             <div class="faq-item">
-                <div class="faq-q">
+                <div class="faq-q" onclick="toggleFaq(this)">
                     <span>Qualquer pessoa pode fazer cirurgia ortognática?</span>
                     <div class="faq-arrow">▼</div>
                 </div>
                 <div class="faq-a">Nem todas as pessoas são candidatas. A indicação depende de avaliação criteriosa, considerando o grau de desarmonia óssea, idade, saúde geral e crescimento ósseo completo (geralmente após 18–21 anos).</div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">
+                <div class="faq-q" onclick="toggleFaq(this)">
                     <span>Há necessidade de usar aparelho ortodôntico?</span>
                     <div class="faq-arrow">▼</div>
                 </div>
                 <div class="faq-a">Sim, geralmente é necessário usar aparelho antes e após a cirurgia para alinhar os dentes e garantir resultados ótimos e duradouros.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">
+                <div class="faq-q" onclick="toggleFaq(this)">
                     <span>O tratamento consiste em quantas etapas?</span>
                     <div class="faq-arrow">▼</div>
                 </div>
                 <div class="faq-a">Geralmente em 3 etapas: preparação com aparelho ortodôntico (6–18 meses), cirurgia ortognática, e refinamento pós-cirúrgico com aparelho (6–12 meses).</div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">
+                <div class="faq-q" onclick="toggleFaq(this)">
                     <span>Que problemas as deformidades dentofaciais podem causar?</span>
                     <div class="faq-arrow">▼</div>
                 </div>
                 <div class="faq-a">Problemas de mastigação, fala, respiração, apneia do sono, dores articulares, desgaste dentário, dores de cabeça e impacto psicológico significativo na autoestima.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">
+                <div class="faq-q" onclick="toggleFaq(this)">
                     <span>A cirurgia é coberta por planos de saúde?</span>
                     <div class="faq-arrow">▼</div>
                 </div>
                 <div class="faq-a">A cobertura depende do plano e da indicação médica. A Dra. Lorraine realiza cirurgias em ambiente hospitalar pelos principais convênios (Unimed, Bradesco, IMAS, IPASGO e outros). As consultas de avaliação no consultório são realizadas de forma particular.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">
+                <div class="faq-q" onclick="toggleFaq(this)">
                     <span>A extração de sisos é perigosa?</span>
                     <div class="faq-arrow">▼</div>
                 </div>
                 <div class="faq-a">Quando realizada por um especialista bucomaxilofacial, a extração é segura e minimamente invasiva. A Dra. Lorraine utiliza protocolos anestésicos modernos para garantir o máximo conforto, mesmo nos casos próximos ao nervo.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">
+                <div class="faq-q" onclick="toggleFaq(this)">
                     <span>Como funciona a Lipo Papada?</span>
                     <div class="faq-arrow">▼</div>
                 </div>
@@ -2755,4 +2769,33 @@
         const item = el.closest('.faq-item');
         if (!item) return;
         const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.class
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+
+    // Slider principal
+    var currentSlide = 0;
+    var slides = ['resultado1.jpg', 'resultado2.jpg', 'resultado3.jpg'];
+    function showSlide(n) {
+        currentSlide = (n + slides.length) % slides.length;
+        var img = document.getElementById('sliderImage');
+        if (img) img.src = slides[currentSlide];
+        document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+        document.querySelectorAll('.slide-thumb').forEach((t, i) => t.classList.toggle('active', i === currentSlide));
+    }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function previousSlide() { showSlide(currentSlide - 1); }
+
+    // Mobile nav
+    function closeMobileNav() {
+        document.getElementById('mobileNav').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('open');
+    }
+    document.getElementById('hamburger').addEventListener('click', function() {
+        this.classList.toggle('open');
+        document.getElementById('mobileNav').classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', closeMobileNav));
+</script>
+</body>
+</html>
