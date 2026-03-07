@@ -422,73 +422,196 @@
         .sec-header.light h2 { color: white; }
         .sec-header.light p { color: rgba(255,255,255,0.6); }
 
-        /* ── ESPECIALIDADES ── */
-        .especialidades { background: var(--off-white); }
+        /* ── ESPECIALIDADES COM FOTO ── */
+        .especialidades { background: #0a0a0a; }
 
         .esp-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 0;
         }
 
         .esp-card {
-            background: white;
-            border-radius: 14px;
-            padding: 34px 26px;
-            text-align: center;
-            border: 1.5px solid transparent;
-            transition: all 0.35s;
-            cursor: pointer;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+            background: #111;
         }
 
-        .esp-card::before {
-            content: '';
+        .esp-card::before { display: none; }
+
+        .esp-card-img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: brightness(0.55);
+        }
+
+        .esp-card:hover .esp-card-img {
+            transform: scale(1.07);
+            filter: brightness(0.35);
+        }
+
+        .esp-card-overlay {
             position: absolute;
-            bottom: 0; left: 0;
-            width: 100%; height: 3px;
-            background: var(--gold);
-            transform: scaleX(0);
-            transition: transform 0.35s;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+            transition: all 0.4s;
         }
 
-        .esp-card:hover::before { transform: scaleX(1); }
-
-        .esp-card:hover {
-            border-color: rgba(201,168,76,0.25);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(14,28,46,0.1);
+        .esp-card:hover .esp-card-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 100%);
         }
 
-        .esp-icon {
-            width: 64px; height: 64px;
-            background: var(--gold-pale);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin: 0 auto 18px;
-            transition: all 0.3s;
+        .esp-card-content {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 28px 24px;
+            transition: all 0.4s;
         }
 
-        .esp-card:hover .esp-icon {
-            background: var(--gold);
+        .esp-card-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.14em;
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.4s;
+        }
+
+        .esp-card:hover .esp-card-num {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .esp-card h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 10px;
+            color: white;
+            margin-bottom: 8px;
+            line-height: 1.2;
         }
 
         .esp-card p {
-            font-size: 13.5px;
-            color: var(--gray);
-            line-height: 1.65;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s;
+            opacity: 0;
+        }
+
+        .esp-card:hover p {
+            max-height: 100px;
+            opacity: 1;
+        }
+
+        .esp-card-tag {
+            position: absolute;
+            top: 18px; left: 18px;
+            background: rgba(201,168,76,0.15);
+            border: 1px solid rgba(201,168,76,0.4);
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 5px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+
+        /* ── BOTÃO FLUTUANTE MELHORADO ── */
+        .float-actions {
+            position: fixed;
+            bottom: 28px; right: 28px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .float-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .float-menu.open {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .float-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            background: white;
+            color: #111;
+            padding: 10px 18px 10px 14px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+
+        .float-item:hover {
+            transform: translateX(-4px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+        }
+
+        .float-item.wpp { background: #25D366; color: white; }
+        .float-item.ig { background: linear-gradient(135deg, #f09433, #dc2743, #bc1888); color: white; }
+
+        .float-item-icon {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+        }
+
+        .float-main {
+            width: 58px; height: 58px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 6px 24px rgba(201,168,76,0.5);
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            animation: pulse-gold 2.5s infinite;
+        }
+
+        .float-main:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 10px 30px rgba(201,168,76,0.6);
+        }
+
+        .float-main.open {
+            transform: rotate(45deg);
+            background: #333;
+            animation: none;
+        }
+
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 6px 24px rgba(201,168,76,0.5); }
+            50% { box-shadow: 0 6px 36px rgba(201,168,76,0.8), 0 0 0 8px rgba(201,168,76,0.1); }
         }
 
         /* ── CONVÊNIOS ── */
@@ -1283,41 +1406,71 @@
 <!-- Especialidades -->
 <section class="especialidades" id="especialidades">
     <div class="container">
-        <div class="sec-header">
+        <div class="sec-header light">
             <span class="sec-eyebrow">O que tratamos</span>
             <h2>Nossas Especialidades</h2>
             <p>Procedimentos avançados para harmonia facial, saúde bucal e qualidade de vida</p>
         </div>
-        <div class="esp-grid">
-            <div class="esp-card">
-                <div class="esp-icon">🦷</div>
+    </div>
+    <div class="esp-grid">
+        <div class="esp-card">
+            <img class="esp-card-img" src="esp-ortognatica.webp" alt="Cirurgia Ortognática">
+            <div class="esp-card-overlay"></div>
+            <div class="esp-card-tag">Especialidade</div>
+            <div class="esp-card-content">
+                <div class="esp-card-num">01 — CIRURGIA</div>
                 <h3>Cirurgia Ortognática</h3>
-                <p>Corrige desalinhamentos ósseos da maxila e mandíbula, melhorando mastigação, fala e respiração.</p>
+                <p>Você sente dificuldade para morder, falar ou respirar corretamente? Esse procedimento corrige alterações ósseas no maxilar e mandíbula, melhorando a função mastigatória, a harmonia facial e a qualidade de vida.</p>
             </div>
-            <div class="esp-card">
-                <div class="esp-icon">😁</div>
-                <h3>Implantes Dentários</h3>
-                <p>Substituição de dentes perdidos com implantes de titânio, restaurando estética e funcionalidade.</p>
+        </div>
+        <div class="esp-card">
+            <img class="esp-card-img" src="esp-dtm.webp" alt="Disfunção Temporomandibular">
+            <div class="esp-card-overlay"></div>
+            <div class="esp-card-tag">Especialidade</div>
+            <div class="esp-card-content">
+                <div class="esp-card-num">02 — DTM</div>
+                <h3>Disfunção Temporomandibular</h3>
+                <p>Dores intensas na mandíbula, estalos dolorosos ao mastigar e dificuldade para abrir a boca podem ser sinais de DTM. Tratamos com precisão para devolver sua qualidade de vida.</p>
             </div>
-            <div class="esp-card">
-                <div class="esp-icon">🎯</div>
-                <h3>Cirurgia de ATM</h3>
-                <p>Tratamento de dores, estalos e disfunções da articulação temporomandibular.</p>
-            </div>
-            <div class="esp-card">
-                <div class="esp-icon">😴</div>
-                <h3>Apneia do Sono</h3>
-                <p>Cirurgia ortognática para ampliar vias aéreas e eliminar a apneia obstrutiva do sono.</p>
-            </div>
-            <div class="esp-card">
-                <div class="esp-icon">🦴</div>
+        </div>
+        <div class="esp-card">
+            <img class="esp-card-img" src="esp-sisos.webp" alt="Extração de Sisos">
+            <div class="esp-card-overlay"></div>
+            <div class="esp-card-tag">Especialidade</div>
+            <div class="esp-card-content">
+                <div class="esp-card-num">03 — SISOS</div>
                 <h3>Extração de Sisos</h3>
-                <p>Remoção segura dos dentes do siso com técnicas minimamente invasivas e conforto no pós-op.</p>
+                <p>Aquele incômodo no fundo da boca pode ser causado pelos sisos! A extração é um procedimento seguro, minimamente invasivo, que evita problemas futuros e alivia o desconforto.</p>
             </div>
-            <div class="esp-card">
-                <div class="esp-icon">✨</div>
+        </div>
+        <div class="esp-card">
+            <img class="esp-card-img" src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Implantes Dentários">
+            <div class="esp-card-overlay"></div>
+            <div class="esp-card-tag">Especialidade</div>
+            <div class="esp-card-content">
+                <div class="esp-card-num">04 — IMPLANTES</div>
+                <h3>Implantes Dentários</h3>
+                <p>Substituição de dentes perdidos com implantes de titânio, restaurando estética e funcionalidade com resultado natural e duradouro.</p>
+            </div>
+        </div>
+        <div class="esp-card">
+            <img class="esp-card-img" src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80" alt="Apneia do Sono">
+            <div class="esp-card-overlay"></div>
+            <div class="esp-card-tag">Especialidade</div>
+            <div class="esp-card-content">
+                <div class="esp-card-num">05 — SONO</div>
+                <h3>Apneia do Sono</h3>
+                <p>Cirurgia ortognática para ampliar vias aéreas e eliminar a apneia obstrutiva. Durma melhor e com mais qualidade de vida.</p>
+            </div>
+        </div>
+        <div class="esp-card">
+            <img class="esp-card-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Procedimentos Estéticos">
+            <div class="esp-card-overlay"></div>
+            <div class="esp-card-tag">Especialidade</div>
+            <div class="esp-card-content">
+                <div class="esp-card-num">06 — ESTÉTICA</div>
                 <h3>Procedimentos Estéticos</h3>
-                <p>Harmonização facial com implantes e correções de assimetrias para um resultado natural.</p>
+                <p>Harmonização facial com implantes e correções de assimetrias para um resultado natural e equilibrado.</p>
             </div>
         </div>
     </div>
@@ -1478,27 +1631,7 @@
     </div>
 </section>
 
-<!-- Instagram -->
-<section class="instagram" id="instagram">
-    <div class="container">
-        <div class="sec-header light">
-            <span class="sec-eyebrow">Redes Sociais</span>
-            <h2>Siga no Instagram</h2>
-            <p>Acompanhe casos, dicas e novidades sobre cirurgia bucomaxilofacial</p>
-        </div>
-        <div class="ig-preview-grid">
-            <div class="ig-card">📸</div>
-            <div class="ig-card">📸</div>
-            <div class="ig-card">📸</div>
-            <div class="ig-card">📸</div>
-        </div>
-        <div class="ig-cta">
-            <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="btn-instagram">
-                📸 @dra.lorrainebucomaxilo
-            </a>
-        </div>
-    </div>
-</section>
+
 
 <!-- FAQ -->
 <section class="faq" id="faq">
@@ -1601,8 +1734,20 @@
     </div>
 </footer>
 
-<!-- Botão WhatsApp Flutuante -->
-<a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" target="_blank" class="wpp-float" title="Falar pelo WhatsApp">💬</a>
+<!-- Botão Flutuante -->
+<div class="float-actions">
+    <div class="float-menu" id="floatMenu">
+        <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" target="_blank" class="float-item wpp">
+            <div class="float-item-icon">💬</div>
+            Agendar pelo WhatsApp
+        </a>
+        <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="float-item ig">
+            <div class="float-item-icon">📸</div>
+            Ver no Instagram
+        </a>
+    </div>
+    <button class="float-main" id="floatBtn" onclick="toggleFloat()">✚</button>
+</div>
 
 <script>
     let currentSlide = 0;
@@ -1623,7 +1768,21 @@
     function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
     function previousSlide() { showSlide((currentSlide - 1 + slides.length) % slides.length); }
 
-    function toggleFaq(el) {
+    function toggleFloat() {
+        const btn = document.getElementById('floatBtn');
+        const menu = document.getElementById('floatMenu');
+        btn.classList.toggle('open');
+        menu.classList.toggle('open');
+    }
+
+    // Fechar ao clicar fora
+    document.addEventListener('click', function(e) {
+        const fa = document.querySelector('.float-actions');
+        if (!fa.contains(e.target)) {
+            document.getElementById('floatBtn').classList.remove('open');
+            document.getElementById('floatMenu').classList.remove('open');
+        }
+    });
         const item = el.parentElement;
         const isOpen = item.classList.contains('open');
         document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
