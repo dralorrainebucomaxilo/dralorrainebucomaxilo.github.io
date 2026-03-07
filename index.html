@@ -30,6 +30,19 @@
             overflow-x: hidden;
         }
 
+        .logo-img-header {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-img-footer {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
         /* ── HEADER ── */
         .header-bar {
             background: var(--gold);
@@ -750,6 +763,34 @@
             font-weight: 600;
         }
 
+        /* ── ABAS CASOS ── */
+        .casos-tabs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 36px;
+        }
+        .caso-tab {
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: 2px solid rgba(201,168,76,0.4);
+            background: transparent;
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .caso-tab.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #000;
+        }
+        .caso-tab:hover:not(.active) {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
         /* ── RESULTADOS ── */
         .resultados { background: #000000; }
 
@@ -1020,6 +1061,56 @@
             font-size: 12.5px;
             color: var(--gray);
             line-height: 1.6;
+        }
+
+        /* ── TRATAMENTOS ── */
+        .tratamentos { background: var(--off-white); }
+
+        .trat-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        @media (min-width: 600px) {
+            .trat-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        }
+
+        .trat-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .trat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 18px;
+            background: white;
+            border: 1.5px solid #ebebeb;
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--navy);
+            text-decoration: none;
+            transition: all 0.25s;
+            cursor: pointer;
+        }
+
+        .trat-item::before {
+            content: '';
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .trat-item:hover {
+            border-color: var(--gold);
+            background: var(--gold-pale);
+            color: var(--navy);
+            transform: translateX(4px);
         }
 
         /* ── MAPA ── */
@@ -1709,14 +1800,11 @@
 <header>
     <div class="header-inner">
         <a href="#" class="logo">
-            <div class="logo-mark">LA</div>
-            <div class="logo-text">
-                <h1>DRA. LORRAINE ASSIS</h1>
-                <p>Cirurgia Bucomaxilofacial</p>
-            </div>
+            <img src="logo-completa.jpg" alt="Dra. Lorraine Assis" class="logo-img-header">
         </a>
         <nav>
             <a href="#especialidades">Especialidades</a>
+            <a href="#tratamentos">Tratamentos</a>
             <a href="#convenios">Convênios</a>
             <a href="#resultados">Resultados</a>
             <a href="#sobre">Sobre</a>
@@ -1733,6 +1821,7 @@
 <!-- Mobile Nav -->
 <div class="mobile-nav" id="mobileNav">
     <a href="#especialidades" onclick="closeMobileNav()">Especialidades</a>
+    <a href="#tratamentos" onclick="closeMobileNav()">Tratamentos</a>
     <a href="#convenios" onclick="closeMobileNav()">Convênios</a>
     <a href="#resultados" onclick="closeMobileNav()">Resultados</a>
     <a href="#sobre" onclick="closeMobileNav()">Sobre</a>
@@ -1746,8 +1835,8 @@
     <div class="hero-grid container">
         <div class="hero-left">
             <div class="hero-eyebrow">Cirurgia Bucomaxilofacial · Goiânia</div>
-            <h1>Cirurgia &<br><em>Traumatologia Bucomaxilofacial</em></h1>
-            <p class="hero-desc">Restaure sua qualidade de vida e renove sua autoestima através da Cirurgia Bucomaxilofacial. Procedimentos precisos e personalizados que combinam estética, função e bem-estar.</p>
+            <h1>Cirurgia & Traumatologia<br><em>Bucomaxilofacial em Goiânia</em></h1>
+            <p class="hero-desc">Especialista no diagnóstico e tratamento das estruturas da face, maxilares e cavidade oral, unindo precisão cirúrgica, tecnologia e planejamento individualizado para restaurar função, estética e qualidade de vida.</p>
             <div class="hero-actions">
                 <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-primary">💬 AGENDAR CONSULTA</a>
                 <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="btn-outline">📸 Ver Resultados</a>
@@ -1788,7 +1877,7 @@
         <div class="sec-header light">
             <span class="sec-eyebrow">O que tratamos</span>
             <h2>Nossas Especialidades</h2>
-            <p>Procedimentos cirúrgicos avançados para saúde bucal, função e qualidade de vida</p>
+            <p>Procedimentos cirúrgicos avançados para restaurar equilíbrio funcional e harmonia facial.</p>
         </div>
     </div>
     <div class="esp-grid">
@@ -1843,7 +1932,7 @@
             </div>
         </div>
         <div class="esp-card">
-            <img class="esp-card-img" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Procedimentos Estéticos">
+            <img class="esp-card-img" src="esp-estetica.jpg" alt="Procedimentos Estéticos">
             <div class="esp-card-overlay"></div>
             <div class="esp-card-tag">Especialidade</div>
             <div class="esp-card-content">
@@ -1932,16 +2021,21 @@
             <h2>Resultados de Pacientes</h2>
             <p>Casos reais que melhoram função, estética e qualidade de vida</p>
         </div>
-        <div class="resultados-inner">
-            <!-- Slider de fotos -->
+        <!-- Abas dos casos -->
+        <div class="casos-tabs">
+            <button class="caso-tab active" onclick="showCaso(0)">Caso 1 — Paciente F.</button>
+            <button class="caso-tab" onclick="showCaso(1)">Caso 2 — Neto</button>
+        </div>
+
+        <!-- CASO 1 -->
+        <div class="resultados-inner caso-panel active" id="caso-0">
             <div class="slider-container">
                 <div class="slider-wrapper">
-                    <img id="sliderImage" class="slider-image" src="resultado1.jpg" alt="Resultado Cirurgia Ortognática">
+                    <img id="sliderImage" class="slider-image" src="resultado1.jpg" alt="Resultado">
                     <div class="slider-overlay"></div>
                     <div class="slider-dots">
                         <div class="dot active" onclick="showSlide(0)"></div>
                         <div class="dot" onclick="showSlide(1)"></div>
-                        <div class="dot" onclick="showSlide(2)"></div>
                     </div>
                     <div class="slider-controls">
                         <button class="slider-btn" onclick="previousSlide()">← Anterior</button>
@@ -1949,24 +2043,14 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Informações do caso -->
             <div class="caso-info">
                 <div class="caso-tag">✨ Caso Clínico Real</div>
                 <h3>Correção de Estética<br>e Função</h3>
-
                 <div class="slide-counter">
-                    <div class="slide-thumb active" onclick="showSlide(0)">
-                        <img src="resultado1.jpg" alt="Vista frontal sorrindo">
-                    </div>
-                    <div class="slide-thumb" onclick="showSlide(1)">
-                        <img src="resultado2.jpg" alt="Vista frontal neutra">
-                    </div>
-                    <div class="slide-thumb" onclick="showSlide(2)">
-                        <img src="resultado3.jpg" alt="Vista lateral">
-                    </div>
+                    <div class="slide-thumb active" onclick="showSlide(0)"><img src="resultado1.jpg" alt="Vista 1"></div>
+                    <div class="slide-thumb" onclick="showSlide(1)"><img src="resultado2.jpg" alt="Vista 2"></div>
+                    <div class="slide-thumb" onclick="showSlide(2)"><img src="resultado3.jpg" alt="Vista 3"></div>
                 </div>
-
                 <div class="caso-bloco">
                     <div class="caso-bloco-titulo">☝️ Queixas da Paciente</div>
                     <ul>
@@ -1976,7 +2060,6 @@
                         <li>Queixo pequeno</li>
                     </ul>
                 </div>
-
                 <div class="caso-bloco">
                     <div class="caso-bloco-titulo">🔎 Diagnóstico</div>
                     <ul>
@@ -1987,7 +2070,6 @@
                         <li>Exposição excessiva de gengiva</li>
                     </ul>
                 </div>
-
                 <div class="caso-bloco">
                     <div class="caso-bloco-titulo">💡 Planejamento Cirúrgico</div>
                     <ul>
@@ -1996,15 +2078,69 @@
                         <li>Correção de plano oclusal</li>
                     </ul>
                 </div>
-
                 <div class="caso-cta">
                     <p>"Reconstruindo faces. Reconstruindo vidas."</p>
-                    <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vi%20o%20caso%20clínico%20no%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação" class="btn-primary">
-                        💬 Me identifico com este caso
-                    </a>
+                    <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vi%20o%20caso%20clínico%20no%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação" class="btn-primary">💬 Me identifico com este caso</a>
                 </div>
             </div>
         </div>
+
+        <!-- CASO 2 — NETO -->
+        <div class="resultados-inner caso-panel" id="caso-1" style="display:none">
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <img id="sliderImageNeto" class="slider-image" src="resultado4-frontal.jpg" alt="Antes e Depois Neto">
+                    <div class="slider-overlay"></div>
+                    <div class="slider-dots">
+                        <div class="dot-neto active" onclick="showSlideNeto(0)"></div>
+                        <div class="dot-neto" onclick="showSlideNeto(1)"></div>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="showSlideNeto(currentSlideNeto - 1)">← Anterior</button>
+                        <button class="slider-btn" onclick="showSlideNeto(currentSlideNeto + 1)">Próximo →</button>
+                    </div>
+                </div>
+            </div>
+            <div class="caso-info">
+                <div class="caso-tag">✨ Caso Clínico Real</div>
+                <h3>Cirurgia Ortognática<br>Bimaxilar</h3>
+                <div class="slide-counter">
+                    <div class="slide-thumb active" onclick="showSlideNeto(0)"><img src="resultado4-frontal.jpg" alt="Vista Frontal"></div>
+                    <div class="slide-thumb" onclick="showSlideNeto(1)"><img src="resultado4-perfil.jpg" alt="Vista Lateral"></div>
+                </div>
+                <div class="caso-bloco">
+                    <div class="caso-bloco-titulo">☝️ Queixas do Paciente</div>
+                    <ul>
+                        <li>Discrepância maxilomandibular</li>
+                        <li>Assimetria facial</li>
+                        <li>Comprometimento da via aérea</li>
+                    </ul>
+                </div>
+                <div class="caso-bloco">
+                    <div class="caso-bloco-titulo">🔎 Diagnóstico</div>
+                    <ul>
+                        <li>Discrepância ântero-posterior maxilomandibular</li>
+                        <li>Assimetria facial</li>
+                        <li>Comprometimento da musculatura do hióide</li>
+                    </ul>
+                </div>
+                <div class="caso-bloco">
+                    <div class="caso-bloco-titulo">💡 Planejamento Cirúrgico</div>
+                    <ul>
+                        <li>Cirurgia ortognática — avanço bimaxilar</li>
+                        <li>Mentoplastia</li>
+                        <li>Turbinectomia</li>
+                        <li>Transposição do miloioide e digástrico</li>
+                        <li>Suspensão da musculatura do hióide</li>
+                    </ul>
+                </div>
+                <div class="caso-cta">
+                    <p>"Reconstruindo faces. Reconstruindo vidas."</p>
+                    <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vi%20o%20caso%20clínico%20no%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação" class="btn-primary">💬 Me identifico com este caso</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -2098,6 +2234,66 @@
                 </div>
             </div>
 
+        </div>
+
+        <!-- CTA Sintomas -->
+        <div style="text-align:center; margin-top: 52px;">
+            <p style="font-size:15px; color:#666; margin-bottom:20px;">Identificou algum desses sintomas?</p>
+            <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20me%20identifiquei%20com%20alguns%20sintomas%20e%20gostaria%20de%20agendar%20uma%20avaliação" target="_blank" class="btn-primary" style="background:var(--gold);color:#000;display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:50px;font-weight:700;font-size:15px;text-decoration:none;transition:all 0.3s;">
+                💬 Agendar avaliação agora
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Tratamentos -->
+<section class="tratamentos" id="tratamentos">
+    <div class="container">
+        <div class="sec-header">
+            <span class="sec-eyebrow">Área de atuação</span>
+            <h2>Tratamentos</h2>
+            <p>Atendimento especializado em Cirurgia e Traumatologia Bucomaxilofacial</p>
+        </div>
+        <div class="trat-grid">
+            <div class="trat-col">
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Cirurgia Ortognática</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Extração de Sisos</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Disfunção da ATM</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Traumatismos Faciais</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Implantes Dentários</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Prognatismo</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Assimetria Facial</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Lipo Papada</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Próteses Faciais</a>
+            </div>
+            <div class="trat-col">
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Apneia do Sono</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Artroscopia</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Cistos e Tumores</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Abscesso Periodontal</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Anormalidades Maxilofaciais</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Arcada Parcialmente Edentada</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Avulsão Dentária</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Bolsa Gengival</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Reconstruções Ósseas</a>
+            </div>
+            <div class="trat-col">
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Mordida Cruzada</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Fraturas Zigomáticas</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Anquilose de ATM</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Hipersensibilidade em Mandíbula</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Complicações Cirúrgicas</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Cisto Dentígero</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Cisto Radicular</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Bruxismo</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="trat-item">Dente Impactado</a>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top: 44px;">
+            <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20gostaria%20de%20agendar%20uma%20consulta" target="_blank" class="btn-primary">
+                💬 Agendar uma Consulta
+            </a>
         </div>
     </div>
 </section>
@@ -2440,7 +2636,7 @@
     <div class="footer-grid">
         <div class="footer-brand">
             <a href="#" class="logo">
-                <div class="logo-mark">LA</div>
+                <img src="logo-icone-branco.jpg" alt="Dra. Lorraine Assis" class="logo-img-footer">
                 <div class="logo-text">
                     <h1 style="color:white">DRA. LORRAINE ASSIS</h1>
                     <p>Cirurgia Bucomaxilofacial</p>
@@ -2463,7 +2659,7 @@
         <div class="footer-col">
             <h4>Contato</h4>
             <p><strong style="color:rgba(255,255,255,0.7)">(62) 99434-2977</strong></p>
-            <p><a href="mailto:dra.lorrainebucomaxill@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:none;">dra.lorrainebucomaxill@gmail.com</a></p>
+            <p><a href="/cdn-cgi/l/email-protection#97f3e5f6b9fbf8e5e5f6fef9f2f5e2f4f8faf6effefbfbd7f0faf6fefbb9f4f8fa" style="color:rgba(255,255,255,0.45);text-decoration:none;"><span class="__cf_email__" data-cfemail="bbdfc9da95d7d4c9c9dad2d5ded9ced8d4d6dac3d2d7d7fbdcd6dad2d795d8d4d6">[email&#160;protected]</span></a></p>
             <p>Goiânia, GO</p>
         </div>
         <div class="footer-col">
@@ -2483,7 +2679,7 @@
     <span>Agendar consulta</span>
 </a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     let currentSlide = 0;
     const slides = ['resultado1.jpg', 'resultado2.jpg', 'resultado3.jpg'];
 
@@ -2536,21 +2732,28 @@
         document.body.style.overflow = '';
     }
 
+    // Abas casos clínicos
+    function showCaso(index) {
+        document.querySelectorAll('.caso-panel').forEach((p, i) => {
+            p.style.display = i === index ? 'flex' : 'none';
+        });
+        document.querySelectorAll('.caso-tab').forEach((t, i) => {
+            t.classList.toggle('active', i === index);
+        });
+    }
+
+    // Slider Neto
+    var currentSlideNeto = 0;
+    var slidesNeto = ['resultado4-frontal.jpg', 'resultado4-perfil.jpg'];
+    function showSlideNeto(n) {
+        currentSlideNeto = (n + slidesNeto.length) % slidesNeto.length;
+        var img = document.getElementById('sliderImageNeto');
+        if (img) img.src = slidesNeto[currentSlideNeto];
+        document.querySelectorAll('.dot-neto').forEach((d, i) => d.classList.toggle('active', i === currentSlideNeto));
+    }
 
     function toggleFaq(el) {
         const item = el.closest('.faq-item');
         if (!item) return;
         const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-    }
-
-    document.querySelectorAll('.faq-q').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            toggleFaq(this);
-        });
-    });
-
-</script>
-</body>
-</html>
+        document.querySelectorAll('.faq-item').forEach(i => i.class
