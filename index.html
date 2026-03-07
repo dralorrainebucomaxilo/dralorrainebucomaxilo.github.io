@@ -1828,7 +1828,7 @@
             </div>
         </div>
         <div class="esp-card">
-            <img class="esp-card-img" src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80" alt="Apneia do Sono">
+            <img class="esp-card-img" src="esp-apneia.png" alt="Apneia do Sono">
             <div class="esp-card-overlay"></div>
             <div class="esp-card-tag">Especialidade</div>
             <div class="esp-card-content">
@@ -2458,7 +2458,7 @@
         <div class="footer-col">
             <h4>Contato</h4>
             <p><strong style="color:rgba(255,255,255,0.7)">(62) 99434-2977</strong></p>
-            <p><a href="/cdn-cgi/l/email-protection#77130516591b180505161e1912150214181a160f1e1b1b37101a161e1b5914181a" style="color:rgba(255,255,255,0.45);text-decoration:none;"><span class="__cf_email__" data-cfemail="4b2f392a65272439392a22252e293e2824262a332227270b2c262a222765282426">[email&#160;protected]</span></a></p>
+            <p><a href="mailto:dra.lorrainebucomaxill@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:none;">dra.lorrainebucomaxill@gmail.com</a></p>
             <p>Goiânia, GO</p>
         </div>
         <div class="footer-col">
@@ -2478,7 +2478,7 @@
     <span>Agendar consulta</span>
 </a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     let currentSlide = 0;
     const slides = ['resultado1.jpg', 'resultado2.jpg', 'resultado3.jpg'];
 
@@ -2531,8 +2531,21 @@
         document.body.style.overflow = '';
     }
 
+
     function toggleFaq(el) {
         const item = el.closest('.faq-item');
         if (!item) return;
         const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.cla
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+
+    document.querySelectorAll('.faq-q').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            toggleFaq(this);
+        });
+    });
+
+</script>
+</body>
+</html>
