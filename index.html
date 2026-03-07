@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Lorraine Assis - Cirurgia Bucomaxilofacial em Goiânia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #e8cb7a;
+            --gold-pale: rgba(201,168,76,0.12);
+            --navy: #0a0a0a;
+            --navy-mid: #111111;
+            --navy-light: #1a1a1a;
+            --white: #ffffff;
+            --off-white: #f9f9f9;
+            --gray: #888888;
+            --text: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        .header-bar {
+            background: var(--gold);
+            color: var(--navy);
+            text-align: center;
+            padding: 9px 20px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        header {
+            background: var(--white);
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 2px 20px rgba(14,28,46,0.06);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--gold), #000000);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .logo-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 0.06em;
+        }
+
+        .logo-text p {
+            font-size: 10px;
+            color: var(--gold);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        nav {
+            display: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 13.5px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.25s;
+        }
+
+        nav a:hover { color: var(--gold); }
+
+        @media (min-width: 768px) { nav { display: flex; } }
+
+        .btn-wpp {
+            background: #25D366;
+            color: white;
+            padding: 11px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-wpp:hover {
+            background: #1ebe5c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37,211,102,0.35);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #111111 60%, #1a1a1a 100%);
+            color: white;
+            padding: 80px 24px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px; right: -120px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -80px;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 820px) {
+            .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 28px; height: 1px;
+            background: var(--gold);
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(38px, 5vw, 58px);
+            font-weight: 700;
+            line-height: 1.18;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-desc {
+            font-size: 15.5px;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.75;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 44px;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            letter-spacing: 0.03em;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(201,168,76,0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 13px 26px;
+            border-radius: 50px;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            font-weight: 500;
+            font-size: 13.5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            padding-top: 32px;
+            border-top: 1px solid rgba(201,168,76,0.2);
+        }
+
+        .stat-item { text-align: center; }
+
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        /* FOTO HERO */
+        .hero-photo-wrap {
+            position: relative;
+        }
+
+        .hero-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            max-height: 520px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+            border: 1.5px solid rgba(201,168,76,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 16px;
+        }
+
+        .hero-photo-placeholder {
+            text-align: center;
+            padding: 40px;
+            color: var(--gold);
+        }
+
+        .hero-photo-placeholder svg {
+            width: 80px; height: 80px;
+            opacity: 0.4;
+            margin-bottom: 14px;
+        }
+
+        .hero-photo-placeholder p {
+            font-size: 13px;
+            opacity: 0.6;
+            line-height: 1.6;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: -18px;
+            left: -18px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+            line-height: 1.4;
+        }
+
+        .hero-badge span {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .hero-ig {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(14,28,46,0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(201,168,76,0.3);
+            border-radius: 50px;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            text-decoration: none;
+            color: white;
+            font-size: 11.5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .hero-ig:hover {
+            background: rgba(201,168,76,0.2);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ── SEÇÃO GENÉRICA ── */
+        section { padding: 90px 24px; }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .sec-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .sec-eyebrow {
+            display: inline-block;
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .sec-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+
+        .sec-header p {
+            font-size: 15px;
+            color: var(--gray);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .sec-header.light h2 { color: white; }
+        .sec-header.light p { color: rgba(255,255,255,0.6); }
+
+        /* ── ESPECIALIDADES ── */
+        .especialidades { background: var(--off-white); }
+
+        .esp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 22px;
+        }
+
+        .esp-card {
+            background: white;
+            border-radius: 14px;
+            padding: 34px 26px;
+            text-align: center;
+            border: 1.5px solid transparent;
+            transition: all 0.35s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .esp-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+
+        .esp-card:hover::before { transform: scaleX(1); }
+
+        .esp-card:hover {
+            border-color: rgba(201,168,76,0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(14,28,46,0.1);
+        }
+
+        .esp-icon {
+            width: 64px; height: 64px;
+            background: var(--gold-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 18px;
+            transition: all 0.3s;
+        }
+
+        .esp-card:hover .esp-icon {
+            background: var(--gold);
+        }
+
+        .esp-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .esp-card p {
+            font-size: 13.5px;
+            color: var(--gray);
+            line-height: 1.65;
+        }
+
+        /* ── CONVÊNIOS ── */
+        .convenios { background: white; }
+
+        .convenios-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .convenio-item {
+            background: var(--off-white);
+            border: 1.5px solid rgba(201,168,76,0.15);
+            border-radius: 12px;
+            padding: 18px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 160px;
+            transition: all 0.3s;
+        }
+
+        .convenio-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(201,168,76,0.15);
+        }
+
+        .convenio-item span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 0.05em;
+        }
+
+        .convenio-item .conv-icon {
+            width: 10px; height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .convenios-note {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .convenios-note a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ── RESULTADOS ── */
+        .resultados { background: #000000; }
+
+        /* ── SLIDER RESULTADOS ── */
+        .resultados-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (min-width: 900px) {
+            .resultados-inner { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+        }
+
+        .slider-container {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(201,168,76,0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .slider-image {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 600px;
+            transition: opacity 0.4s ease;
+        }
+
+        .slider-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 45%);
+            pointer-events: none;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.35);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-btn {
+            background: rgba(201,168,76,0.92);
+            color: #000;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            transition: all 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: var(--gold);
+            transform: scale(1.04);
+        }
+
+        /* Caso clínico lateral */
+        .caso-info {
+            color: white;
+        }
+
+        .caso-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(201,168,76,0.12);
+            border: 1px solid rgba(201,168,76,0.35);
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            padding: 7px 14px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .caso-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(22px, 3vw, 32px);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.25;
+        }
+
+        .caso-bloco {
+            margin-bottom: 18px;
+        }
+
+        .caso-bloco-titulo {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .caso-bloco ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .caso-bloco ul li {
+            font-size: 13.5px;
+            color: rgba(255,255,255,0.65);
+            padding: 5px 0;
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .caso-bloco ul li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .caso-cta {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(201,168,76,0.15);
+        }
+
+        .caso-cta p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 16px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .slide-counter {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .slide-thumb {
+            width: 56px; height: 40px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0.5;
+        }
+
+        .slide-thumb.active {
+            border-color: var(--gold);
+            opacity: 1;
+        }
+
+        .slide-thumb img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        /* ── SINTOMAS ── */
+        .sintomas { background: var(--off-white); }
+
+        .sintomas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .sintoma-card {
+            background: #111111;
+            border: 1.5px solid rgba(201,168,76,0.2);
+            border-radius: 14px;
+            padding: 26px 22px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .sintoma-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(14,28,46,0.25);
+        }
+
+        .sintoma-icon { font-size: 34px; margin-bottom: 12px; }
+
+        .sintoma-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: 0.03em;
+        }
+
+        .sintoma-card p {
+            font-size: 12.5px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.6;
+        }
+
+        /* ── SOBRE ── */
+        .sobre { background: white; }
+
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        @media (min-width: 820px) {
+            .sobre-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .sobre-photo-wrap {
+            position: relative;
+        }
+
+        .sobre-photo {
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(145deg, var(--gold-pale), rgba(201,168,76,0.06));
+            border: 2px dashed rgba(201,168,76,0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sobre-photo img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        .sobre-photo-placeholder {
+            text-align: center;
+            padding: 40px;
+            color: var(--gold);
+        }
+
+        .sobre-photo-placeholder svg {
+            width: 64px; height: 64px;
+            opacity: 0.35;
+            margin-bottom: 12px;
+        }
+
+        .sobre-photo-placeholder p {
+            font-size: 12px;
+            opacity: 0.55;
+            color: var(--navy);
+        }
+
+        .sobre-deco {
+            position: absolute;
+            top: -16px; right: -16px;
+            width: 100px; height: 100px;
+            border: 2px solid rgba(201,168,76,0.2);
+            border-radius: 16px;
+            z-index: -1;
+        }
+
+        .sobre-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .sobre-eyebrow::before {
+            content: '';
+            width: 24px; height: 1px;
+            background: var(--gold);
+        }
+
+        .sobre-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(30px, 4vw, 44px);
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+            line-height: 1.15;
+        }
+
+        .sobre-text h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray);
+            margin-bottom: 24px;
+            letter-spacing: 0.04em;
+        }
+
+        .sobre-text p {
+            font-size: 14.5px;
+            color: #4a5a6a;
+            line-height: 1.82;
+            margin-bottom: 16px;
+        }
+
+        .sobre-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--gold-pale);
+            border: 1px solid rgba(201,168,76,0.3);
+            color: var(--navy);
+            padding: 9px 16px;
+            border-radius: 50px;
+            font-size: 12.5px;
+            font-weight: 600;
+        }
+
+        .badge::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* ── INSTAGRAM ── */
+        .instagram { background: #111111; }
+
+        .ig-cta {
+            text-align: center;
+            margin-top: 44px;
+        }
+
+        .btn-instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 0.04em;
+        }
+
+        .btn-instagram:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(220,39,67,0.45);
+        }
+
+        .ig-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 600px) {
+            .ig-preview-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .ig-card {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            background: #1a1a1a;
+            border: 1.5px solid rgba(201,168,76,0.15);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.2);
+            font-size: 28px;
+            transition: all 0.3s;
+        }
+
+        .ig-card:hover {
+            border-color: var(--gold);
+            transform: scale(1.04);
+        }
+
+        /* ── FAQ ── */
+        .faq { background: var(--off-white); }
+
+        .faq-list {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            border: 1.5px solid #e8e8e8;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .faq-item.open { border-color: rgba(201,168,76,0.4); }
+
+        .faq-q {
+            padding: 20px 22px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            font-size: 14.5px;
+            transition: color 0.3s;
+        }
+
+        .faq-item.open .faq-q { color: var(--gold); }
+
+        .faq-arrow {
+            width: 26px; height: 26px;
+            background: var(--gold-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--gold);
+            flex-shrink: 0;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+            background: var(--gold);
+            color: white;
+        }
+
+        .faq-a {
+            padding: 0 22px;
+            font-size: 13.5px;
+            color: var(--gray);
+            line-height: 1.75;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.3s;
+        }
+
+        .faq-item.open .faq-a {
+            max-height: 300px;
+            padding-bottom: 20px;
+        }
+
+        /* ── CTA FINAL ── */
+        .cta-final {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-final h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(30px, 5vw, 52px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta-final p {
+            font-size: 15.5px;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 38px;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        .cta-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #000000;
+            color: white;
+            padding: 60px 24px 30px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .footer-brand .logo { margin-bottom: 18px; display: inline-flex; }
+        .footer-brand p {
+            font-size: 13.5px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-link {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(201,168,76,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p, .footer-col a {
+            display: block;
+            font-size: 13.5px;
+            color: rgba(255,255,255,0.45);
+            line-height: 2;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .footer-col a:hover { color: var(--gold); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 28px auto 0;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.25);
+        }
+
+        /* ── WPP FLUTUANTE ── */
+        .wpp-float {
+            position: fixed;
+            bottom: 28px; right: 28px;
+            z-index: 999;
+            width: 58px; height: 58px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 8px 24px rgba(37,211,102,0.5);
+            text-decoration: none;
+            transition: all 0.3s;
+            animation: pulse-wpp 2s infinite;
+        }
+
+        .wpp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(37,211,102,0.6);
+        }
+
+        @keyframes pulse-wpp {
+            0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,0.5); }
+            50% { box-shadow: 0 8px 36px rgba(37,211,102,0.75), 0 0 0 8px rgba(37,211,102,0.1); }
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 600px) {
+            section { padding: 70px 18px; }
+            .slider-wrapper { height: 500px; }
+            .hero { padding: 60px 18px 80px; }
+            .hero-stats { gap: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra topo -->
+<div class="header-bar">
+    📍 Atendimento em Goiânia–GO &nbsp;|&nbsp; <strong>(62) 99978-1029</strong> &nbsp;|&nbsp; Seg–Sex: 8h–18h &nbsp; Sáb: 9h–13h
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <div class="logo-mark">LA</div>
+            <div class="logo-text">
+                <h1>DRA. LORRAINE ASSIS</h1>
+                <p>Cirurgia Bucomaxilofacial</p>
+            </div>
+        </a>
+        <nav>
+            <a href="#especialidades">Especialidades</a>
+            <a href="#convenios">Convênios</a>
+            <a href="#resultados">Resultados</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-wpp">💬 Agendar</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-grid container">
+        <div class="hero-left">
+            <div class="hero-eyebrow">Cirurgia Bucomaxilofacial · Goiânia</div>
+            <h1>Harmonia Facial &<br><em>Qualidade de Vida</em></h1>
+            <p class="hero-desc">Procedimentos cirúrgicos precisos e personalizados que combinam estética, função e bem-estar. Respire, mastigue e sorria com mais conforto.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-primary">💬 AGENDAR CONSULTA</a>
+                <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="btn-outline">📸 Ver Resultados</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">Avaliações positivas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">UFG</div>
+                    <div class="stat-label">Graduação Federal</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">+6</div>
+                    <div class="stat-label">Anos de especialização</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-photo-wrap">
+            <div class="hero-photo">
+                <img src="foto-dra.jpg" alt="Dra. Lorraine Assis - Cirurgiã Bucomaxilofacial">
+            </div>
+            <div class="hero-badge">
+                <span>★★★★★</span>
+                Cirurgiã Bucomaxilofacial<br>CRO-GO
+            </div>
+            <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="hero-ig">
+                📸 @dra.lorrainebucomaxilo
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Especialidades -->
+<section class="especialidades" id="especialidades">
+    <div class="container">
+        <div class="sec-header">
+            <span class="sec-eyebrow">O que tratamos</span>
+            <h2>Nossas Especialidades</h2>
+            <p>Procedimentos avançados para harmonia facial, saúde bucal e qualidade de vida</p>
+        </div>
+        <div class="esp-grid">
+            <div class="esp-card">
+                <div class="esp-icon">🦷</div>
+                <h3>Cirurgia Ortognática</h3>
+                <p>Corrige desalinhamentos ósseos da maxila e mandíbula, melhorando mastigação, fala e respiração.</p>
+            </div>
+            <div class="esp-card">
+                <div class="esp-icon">😁</div>
+                <h3>Implantes Dentários</h3>
+                <p>Substituição de dentes perdidos com implantes de titânio, restaurando estética e funcionalidade.</p>
+            </div>
+            <div class="esp-card">
+                <div class="esp-icon">🎯</div>
+                <h3>Cirurgia de ATM</h3>
+                <p>Tratamento de dores, estalos e disfunções da articulação temporomandibular.</p>
+            </div>
+            <div class="esp-card">
+                <div class="esp-icon">😴</div>
+                <h3>Apneia do Sono</h3>
+                <p>Cirurgia ortognática para ampliar vias aéreas e eliminar a apneia obstrutiva do sono.</p>
+            </div>
+            <div class="esp-card">
+                <div class="esp-icon">🦴</div>
+                <h3>Extração de Sisos</h3>
+                <p>Remoção segura dos dentes do siso com técnicas minimamente invasivas e conforto no pós-op.</p>
+            </div>
+            <div class="esp-card">
+                <div class="esp-icon">✨</div>
+                <h3>Procedimentos Estéticos</h3>
+                <p>Harmonização facial com implantes e correções de assimetrias para um resultado natural.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Convênios -->
+<section class="convenios" id="convenios">
+    <div class="container">
+        <div class="sec-header">
+            <span class="sec-eyebrow">Planos aceitos</span>
+            <h2>Convênios</h2>
+            <p>Atendemos os principais planos de saúde para facilitar o seu acesso ao tratamento</p>
+        </div>
+        <div class="convenios-wrap">
+            <div class="convenio-item"><div class="conv-icon"></div><span>Bradesco Saúde</span></div>
+            <div class="convenio-item"><div class="conv-icon"></div><span>Unimed</span></div>
+            <div class="convenio-item"><div class="conv-icon"></div><span>Amil</span></div>
+            <div class="convenio-item"><div class="conv-icon"></div><span>SulAmérica</span></div>
+            <div class="convenio-item"><div class="conv-icon"></div><span>Hapvida</span></div>
+            <div class="convenio-item"><div class="conv-icon"></div><span>Mediplan</span></div>
+            <div class="convenio-item"><div class="conv-icon"></div><span>Particular</span></div>
+        </div>
+        <p class="convenios-note">
+            Dúvidas sobre cobertura? <a href="https://wa.me/5562999781029?text=Olá,%20gostaria%20de%20saber%20se%20meu%20plano%20é%20aceito">Consulte pelo WhatsApp →</a>
+        </p>
+    </div>
+</section>
+
+<!-- Resultados -->
+<section class="resultados" id="resultados">
+    <div class="container">
+        <div class="sec-header light">
+            <span class="sec-eyebrow">Transformações reais</span>
+            <h2>Resultados de Pacientes</h2>
+            <p>Casos reais que melhoram função, estética e qualidade de vida</p>
+        </div>
+        <div class="resultados-inner">
+            <!-- Slider de fotos -->
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <img id="sliderImage" class="slider-image" src="resultado1.jpg" alt="Resultado Cirurgia Ortognática">
+                    <div class="slider-overlay"></div>
+                    <div class="slider-dots">
+                        <div class="dot active" onclick="showSlide(0)"></div>
+                        <div class="dot" onclick="showSlide(1)"></div>
+                        <div class="dot" onclick="showSlide(2)"></div>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="previousSlide()">← Anterior</button>
+                        <button class="slider-btn" onclick="nextSlide()">Próximo →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informações do caso -->
+            <div class="caso-info">
+                <div class="caso-tag">✨ Caso Clínico Real</div>
+                <h3>Correção de Estética<br>e Função</h3>
+
+                <div class="slide-counter">
+                    <div class="slide-thumb active" onclick="showSlide(0)">
+                        <img src="resultado1.jpg" alt="Vista frontal sorrindo">
+                    </div>
+                    <div class="slide-thumb" onclick="showSlide(1)">
+                        <img src="resultado2.jpg" alt="Vista frontal neutra">
+                    </div>
+                    <div class="slide-thumb" onclick="showSlide(2)">
+                        <img src="resultado3.jpg" alt="Vista lateral">
+                    </div>
+                </div>
+
+                <div class="caso-bloco">
+                    <div class="caso-bloco-titulo">☝️ Queixas da Paciente</div>
+                    <ul>
+                        <li>Sorriso gengival</li>
+                        <li>Falta de ar durante o sono — apneia</li>
+                        <li>Ronco</li>
+                        <li>Queixo pequeno</li>
+                    </ul>
+                </div>
+
+                <div class="caso-bloco">
+                    <div class="caso-bloco-titulo">🔎 Diagnóstico</div>
+                    <ul>
+                        <li>Má oclusão classe II</li>
+                        <li>Retrognatismo mandibular</li>
+                        <li>Retrognatismo mentoniano</li>
+                        <li>Excesso vertical de maxila</li>
+                        <li>Exposição excessiva de gengiva</li>
+                    </ul>
+                </div>
+
+                <div class="caso-bloco">
+                    <div class="caso-bloco-titulo">💡 Planejamento Cirúrgico</div>
+                    <ul>
+                        <li>Avanço mandibular + mentoplastia</li>
+                        <li>Impacção de maxila</li>
+                        <li>Correção de plano oclusal</li>
+                    </ul>
+                </div>
+
+                <div class="caso-cta">
+                    <p>"Reconstruindo faces. Reconstruindo vidas."</p>
+                    <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vi%20o%20caso%20clínico%20no%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação" class="btn-primary">
+                        💬 Me identifico com este caso
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sintomas -->
+<section class="sintomas" id="sintomas">
+    <div class="container">
+        <div class="sec-header">
+            <span class="sec-eyebrow">Quando buscar ajuda</span>
+            <h2>Você Possui Algum Desses Sintomas?</h2>
+            <p>Estes sinais podem indicar a necessidade de uma avaliação bucomaxilofacial</p>
+        </div>
+        <div class="sintomas-grid">
+            <div class="sintoma-card"><div class="sintoma-icon">😣</div><h3>Dor Facial</h3><p>Desconforto na mandíbula, bochechas ou articulação.</p></div>
+            <div class="sintoma-card"><div class="sintoma-icon">🦷</div><h3>Mordida Desalinhada</h3><p>Mandíbula projetada, retraída ou mordida cruzada.</p></div>
+            <div class="sintoma-card"><div class="sintoma-icon">🍽️</div><h3>Dificuldade Mastigar</h3><p>Problemas ao mastigar alimentos ou falar.</p></div>
+            <div class="sintoma-card"><div class="sintoma-icon">🔊</div><h3>Ruídos Articulares</h3><p>Estalos, cliques ou crepitações na mandíbula.</p></div>
+            <div class="sintoma-card"><div class="sintoma-icon">😮</div><h3>Limitação Abertura</h3><p>Dificuldade para abrir a boca completamente.</p></div>
+            <div class="sintoma-card"><div class="sintoma-icon">🤕</div><h3>Dores de Cabeça</h3><p>Cefaleias frequentes relacionadas à ATM.</p></div>
+            <div class="sintoma-card"><div class="sintoma-icon">😴</div><h3>Ronco / Apneia</h3><p>Ronco noturno ou pausas na respiração.</p></div>
+            <div class="sintoma-card"><div class="sintoma-icon">😬</div><h3>Bruxismo</h3><p>Ranger ou apertar os dentes durante a noite.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Sobre -->
+<section class="sobre" id="sobre">
+    <div class="container">
+        <div class="sobre-grid">
+            <div class="sobre-photo-wrap">
+                <div class="sobre-photo">
+                    <img src="foto-dra.jpg" alt="Dra. Lorraine Assis">
+                </div>
+                <div class="sobre-deco"></div>
+            </div>
+            <div class="sobre-text">
+                <div class="sobre-eyebrow">Conheça a especialista</div>
+                <h2>Dra. Lorraine Assis</h2>
+                <h3>Cirurgiã e Traumatologista Bucomaxilofacial · CRO-GO</h3>
+                <p>Graduada em Odontologia pela <strong>Universidade Federal de Goiás (UFG)</strong>, com especialização em Cirurgia e Traumatologia Bucomaxilofacial e sólida experiência em procedimentos ortognáticos, estéticos e funcionais da face.</p>
+                <p>Atua com foco em precisão cirúrgica, tecnologia avançada e atenção personalizada, sempre respeitando a individualidade e os objetivos de cada paciente.</p>
+                <p>Comprometida com a atualização contínua, participando de congressos nacionais e internacionais para oferecer o que há de mais moderno na especialidade.</p>
+                <div class="sobre-badges">
+                    <span class="badge">100% Avaliações positivas</span>
+                    <span class="badge">Formação UFG</span>
+                    <span class="badge">Tecnologia avançada</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Instagram -->
+<section class="instagram" id="instagram">
+    <div class="container">
+        <div class="sec-header light">
+            <span class="sec-eyebrow">Redes Sociais</span>
+            <h2>Siga no Instagram</h2>
+            <p>Acompanhe casos, dicas e novidades sobre cirurgia bucomaxilofacial</p>
+        </div>
+        <div class="ig-preview-grid">
+            <div class="ig-card">📸</div>
+            <div class="ig-card">📸</div>
+            <div class="ig-card">📸</div>
+            <div class="ig-card">📸</div>
+        </div>
+        <div class="ig-cta">
+            <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="btn-instagram">
+                📸 @dra.lorrainebucomaxilo
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+    <div class="container">
+        <div class="sec-header">
+            <span class="sec-eyebrow">Tire suas dúvidas</span>
+            <h2>Perguntas Frequentes</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>Qualquer pessoa pode fazer cirurgia ortognática?</span>
+                    <div class="faq-arrow">▼</div>
+                </div>
+                <div class="faq-a">Nem todas as pessoas são candidatas. A indicação depende de avaliação criteriosa, considerando o grau de desarmonia óssea, idade, saúde geral e crescimento ósseo completo (geralmente após 18–21 anos).</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>Há necessidade de usar aparelho ortodôntico?</span>
+                    <div class="faq-arrow">▼</div>
+                </div>
+                <div class="faq-a">Sim, geralmente é necessário usar aparelho antes e após a cirurgia para alinhar os dentes e garantir resultados ótimos e duradouros.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>O tratamento consiste em quantas etapas?</span>
+                    <div class="faq-arrow">▼</div>
+                </div>
+                <div class="faq-a">Geralmente em 3 etapas: preparação com aparelho ortodôntico (6–18 meses), cirurgia ortognática, e refinamento pós-cirúrgico com aparelho (6–12 meses).</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>Que problemas as deformidades dentofaciais podem causar?</span>
+                    <div class="faq-arrow">▼</div>
+                </div>
+                <div class="faq-a">Problemas de mastigação, fala, respiração, apneia do sono, dores articulares, desgaste dentário, dores de cabeça e impacto psicológico significativo na autoestima.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>A cirurgia é coberta por planos de saúde?</span>
+                    <div class="faq-arrow">▼</div>
+                </div>
+                <div class="faq-a">A cobertura depende do plano e da indicação médica. A Dra. Lorraine trabalha com os principais convênios e pode orientar sobre a documentação necessária para autorização.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Final -->
+<section class="cta-final">
+    <div class="container">
+        <h2>Agende Sua Avaliação</h2>
+        <p>Dê o primeiro passo para transformar sua harmonia facial e qualidade de vida. Consulta personalizada com a Dra. Lorraine.</p>
+        <div class="cta-btns">
+            <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-primary">💬 AGENDAR PELO WHATSAPP</a>
+            <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="btn-outline">📸 Ver no Instagram</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <a href="#" class="logo">
+                <div class="logo-mark">LA</div>
+                <div class="logo-text">
+                    <h1 style="color:white">DRA. LORRAINE ASSIS</h1>
+                    <p>Cirurgia Bucomaxilofacial</p>
+                </div>
+            </a>
+            <p>Cirurgiã e Traumatologista Bucomaxilofacial especializada em harmonia facial e qualidade de vida em Goiânia–GO.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="social-link" title="Instagram">📸</a>
+                <a href="https://wa.me/5562999781029" target="_blank" class="social-link" title="WhatsApp">💬</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Especialidades</h4>
+            <a href="#especialidades">Cirurgia Ortognática</a>
+            <a href="#especialidades">Implantes Dentários</a>
+            <a href="#especialidades">Cirurgia de ATM</a>
+            <a href="#especialidades">Extração de Sisos</a>
+            <a href="#especialidades">Apneia do Sono</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contato</h4>
+            <p><strong style="color:rgba(255,255,255,0.7)">(62) 99978-1029</strong></p>
+            <p>dra.lorrainebucomaxilo<br>@gmail.com</p>
+            <p>Goiânia, GO</p>
+        </div>
+        <div class="footer-col">
+            <h4>Horários</h4>
+            <p>Segunda a Sexta<br>8h às 18h</p>
+            <p>Sábado<br>9h às 13h</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Dra. Lorraine Assis · Todos os direitos reservados</p>
+    </div>
+</footer>
+
+<!-- Botão WhatsApp Flutuante -->
+<a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" target="_blank" class="wpp-float" title="Falar pelo WhatsApp">💬</a>
+
+<script>
+    let currentSlide = 0;
+    const slides = ['resultado1.jpg', 'resultado2.jpg', 'resultado3.jpg'];
+
+    function showSlide(index) {
+        currentSlide = index;
+        const img = document.getElementById('sliderImage');
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = slides[currentSlide];
+            img.style.opacity = '1';
+        }, 200);
+        document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+        document.querySelectorAll('.slide-thumb').forEach((t, i) => t.classList.toggle('active', i === currentSlide));
+    }
+
+    function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
+    function previousSlide() { showSlide((currentSlide - 1 + slides.length) % slides.length); }
+
+    function toggleFaq(el) {
+        const item = el.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+</script>
+</body>
+</html>
