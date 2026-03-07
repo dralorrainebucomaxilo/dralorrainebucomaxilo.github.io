@@ -975,7 +975,7 @@
             margin-bottom: 16px;
         }
 
-        .slide-thumb {
+        .slide-thumb, .slide-thumb-neto {
             width: 56px; height: 40px;
             border-radius: 6px;
             overflow: hidden;
@@ -985,12 +985,12 @@
             opacity: 0.5;
         }
 
-        .slide-thumb.active {
+        .slide-thumb.active, .slide-thumb-neto.active {
             border-color: var(--gold);
             opacity: 1;
         }
 
-        .slide-thumb img {
+        .slide-thumb img, .slide-thumb-neto img {
             width: 100%; height: 100%;
             object-fit: cover;
         }
@@ -2119,8 +2119,8 @@
                 <div class="caso-tag">✨ Caso Clínico Real</div>
                 <h3>Cirurgia Ortognática<br>Bimaxilar</h3>
                 <div class="slide-counter">
-                    <div class="slide-thumb active" onclick="showSlideNeto(0)"><img src="resultado4-frontal.jpg" alt="Vista Frontal"></div>
-                    <div class="slide-thumb" onclick="showSlideNeto(1)"><img src="resultado4-perfil.jpg" alt="Vista Lateral"></div>
+                    <div class="slide-thumb-neto active" onclick="showSlideNeto(0)"><img src="resultado4-frontal.jpg" alt="Vista Frontal"></div>
+                    <div class="slide-thumb-neto" onclick="showSlideNeto(1)"><img src="resultado4-perfil.jpg" alt="Vista Lateral"></div>
                 </div>
                 <div class="caso-bloco">
                     <div class="caso-bloco-titulo">☝️ Queixas do Paciente</div>
@@ -2676,7 +2676,16 @@
         <div class="footer-col">
             <h4>Contato</h4>
             <p><strong style="color:rgba(255,255,255,0.7)">(62) 99434-2977</strong></p>
-            <p><a href="mailto:dra.lorrainebucomaxill@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:none;">dra.lorrainebucomaxill@gmail.com</a></p>
+            <p><a id="footer-email" href="#" style="color:rgba(255,255,255,0.45);text-decoration:none;"></a></p>
+            <script>
+                (function(){
+                    var u='dra.lorrainebucomaxill';
+                    var d='gmail.com';
+                    var el=document.getElementById('footer-email');
+                    el.href='mailto:'+u+'@'+d;
+                    el.textContent=u+'@'+d;
+                })();
+            </script>
             <p>Goiânia, GO</p>
         </div>
         <div class="footer-col">
@@ -2697,34 +2706,29 @@
 </a>
 
 <script>
+    // ── SLIDER CASO 1 (Ana) ──
     let currentSlide = 0;
     const slides = ['resultado1.jpg', 'resultado2.jpg', 'resultado3.jpg'];
 
     function showSlide(index) {
         currentSlide = (index + slides.length) % slides.length;
         const img = document.getElementById('sliderImage');
+        if (!img) return;
         img.style.opacity = '0';
         setTimeout(() => {
             img.src = slides[currentSlide];
             img.onload = () => { img.style.opacity = '1'; };
             if (img.complete) img.style.opacity = '1';
-        }, 300);
+        }, 200);
         document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
         document.querySelectorAll('.slide-thumb').forEach((t, i) => t.classList.toggle('active', i === currentSlide));
     }
-
     function nextSlide() { showSlide(currentSlide + 1); }
     function previousSlide() { showSlide(currentSlide - 1); }
 
-    // Suporte a teclado
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') previousSlide();
-    });
-
-    // Swipe no mobile
+    // Swipe mobile Caso 1
     let touchStartX = 0;
-    const sliderEl = document.querySelector('.slider-container');
+    const sliderEl = document.querySelector('#caso-0 .slider-container');
     if (sliderEl) {
         sliderEl.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
         sliderEl.addEventListener('touchend', (e) => {
@@ -2733,7 +2737,53 @@
         });
     }
 
-    // Menu hamburguer mobile
+    // Suporte teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') previousSlide();
+    });
+
+    // ── SLIDER CASO 2 (Neto) ──
+    let currentSlideNeto = 0;
+    const slidesNeto = ['resultado4-frontal.jpg', 'resultado4-perfil.jpg'];
+
+    function showSlideNeto(index) {
+        currentSlideNeto = (index + slidesNeto.length) % slidesNeto.length;
+        const img = document.getElementById('sliderImageNeto');
+        if (!img) return;
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = slidesNeto[currentSlideNeto];
+            img.onload = () => { img.style.opacity = '1'; };
+            if (img.complete) img.style.opacity = '1';
+        }, 200);
+        document.querySelectorAll('.dot-neto').forEach((d, i) => d.classList.toggle('active', i === currentSlideNeto));
+        document.querySelectorAll('.slide-thumb-neto').forEach((t, i) => t.classList.toggle('active', i === currentSlideNeto));
+    }
+
+    // ── ABAS CASOS CLÍNICOS ──
+    function showCaso(index) {
+        document.querySelectorAll('.caso-panel').forEach((p, i) => {
+            p.style.display = i === index ? 'grid' : 'none';
+        });
+        document.querySelectorAll('.caso-tab').forEach((t, i) => {
+            t.classList.toggle('active', i === index);
+        });
+    }
+
+    // ── FAQ ──
+    function toggleFaq(el) {
+        const item = el.closest('.faq-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+    document.querySelectorAll('.faq-q').forEach(function(btn) {
+        btn.addEventListener('click', function() { toggleFaq(this); });
+    });
+
+    // ── MENU HAMBURGUER ──
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
 
@@ -2749,59 +2799,6 @@
         document.body.style.overflow = '';
     }
 
-    // Abas casos clínicos
-    function showCaso(index) {
-        document.querySelectorAll('.caso-panel').forEach((p, i) => {
-            p.style.display = i === index ? 'grid' : 'none';
-        });
-        document.querySelectorAll('.caso-tab').forEach((t, i) => {
-            t.classList.toggle('active', i === index);
-        });
-    }
-
-    // Slider Neto
-    var currentSlideNeto = 0;
-    var slidesNeto = ['resultado4-frontal.jpg', 'resultado4-perfil.jpg'];
-    function showSlideNeto(n) {
-        currentSlideNeto = (n + slidesNeto.length) % slidesNeto.length;
-        var img = document.getElementById('sliderImageNeto');
-        if (img) img.src = slidesNeto[currentSlideNeto];
-        document.querySelectorAll('.dot-neto').forEach((d, i) => d.classList.toggle('active', i === currentSlideNeto));
-    }
-
-    function toggleFaq(el) {
-        const item = el.closest('.faq-item');
-        if (!item) return;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-    }
-    document.querySelectorAll('.faq-q').forEach(function(btn) {
-        btn.addEventListener('click', function() { toggleFaq(this); });
-    });
-
-    // Slider principal
-    var currentSlide = 0;
-    var slides = ['resultado1.jpg', 'resultado2.jpg', 'resultado3.jpg'];
-    function showSlide(n) {
-        currentSlide = (n + slides.length) % slides.length;
-        var img = document.getElementById('sliderImage');
-        if (img) img.src = slides[currentSlide];
-        document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-        document.querySelectorAll('.slide-thumb').forEach((t, i) => t.classList.toggle('active', i === currentSlide));
-    }
-    function nextSlide() { showSlide(currentSlide + 1); }
-    function previousSlide() { showSlide(currentSlide - 1); }
-
-    // Mobile nav
-    function closeMobileNav() {
-        document.getElementById('mobileNav').classList.remove('open');
-        document.getElementById('hamburger').classList.remove('open');
-    }
-    document.getElementById('hamburger').addEventListener('click', function() {
-        this.classList.toggle('open');
-        document.getElementById('mobileNav').classList.toggle('open');
-    });
     document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', closeMobileNav));
 </script>
 </body>
