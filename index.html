@@ -115,6 +115,68 @@
 
         @media (min-width: 768px) { nav { display: flex; } }
 
+        /* ── HAMBURGER ── */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 38px; height: 38px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 4px;
+            z-index: 300;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--navy);
+            border-radius: 2px;
+            transition: all 0.3s;
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        @media (min-width: 768px) { .hamburger { display: none; } }
+
+        /* ── MOBILE NAV OVERLAY ── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 250;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            padding: 40px 24px;
+        }
+
+        .mobile-nav.open { display: flex; }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 22px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            transition: color 0.25s;
+        }
+
+        .mobile-nav a:hover { color: var(--gold); }
+
+        .mobile-nav .btn-wpp {
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
         .btn-wpp {
             background: #25D366;
             color: white;
@@ -1612,8 +1674,22 @@
             <a href="#faq">FAQ</a>
             <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-wpp">💬 Agendar</a>
         </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="#especialidades" onclick="closeMobileNav()">Especialidades</a>
+    <a href="#convenios" onclick="closeMobileNav()">Convênios</a>
+    <a href="#resultados" onclick="closeMobileNav()">Resultados</a>
+    <a href="#sobre" onclick="closeMobileNav()">Sobre</a>
+    <a href="#localizacao" onclick="closeMobileNav()">Localização</a>
+    <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+    <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-wpp" target="_blank">💬 Agendar Consulta</a>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -1697,7 +1773,7 @@
             </div>
         </div>
         <div class="esp-card">
-            <img class="esp-card-img" src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80" alt="Implantes Dentários">
+            <img class="esp-card-img" src="esp-implante.png" alt="Implantes Dentários">
             <div class="esp-card-overlay"></div>
             <div class="esp-card-tag">Especialidade</div>
             <div class="esp-card-content">
@@ -1727,7 +1803,7 @@
             </div>
         </div>
         <div class="esp-card">
-            <img class="esp-card-img" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Lipo Papada">
+            <img class="esp-card-img" src="esp-lipo-papada.png" alt="Lipo Papada">
             <div class="esp-card-overlay"></div>
             <div class="esp-card-tag">Especialidade</div>
             <div class="esp-card-content">
@@ -2331,6 +2407,22 @@
         });
     }
 
+    // Menu hamburguer mobile
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileNav.classList.toggle('open');
+        document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMobileNav() {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
     function toggleFaq(el) {
         const item = el.closest('.faq-item');
         if (!item) return;
@@ -2339,12 +2431,9 @@
         if (!isOpen) item.classList.add('open');
     }
 
-    // Event delegation como fallback extra
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.faq-q').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                toggleFaq(this);
-            });
+    document.querySelectorAll('.faq-q').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            toggleFaq(this);
         });
     });
 </script></body>
