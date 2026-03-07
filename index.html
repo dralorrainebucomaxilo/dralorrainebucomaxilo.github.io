@@ -525,137 +525,154 @@
             text-transform: uppercase;
         }
 
-        /* ── BOTÃO FLUTUANTE MELHORADO ── */
-        .float-actions {
+        /* ── BOTÃO FLUTUANTE ── */
+        .wpp-float {
             position: fixed;
             bottom: 28px; right: 28px;
             z-index: 999;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-        }
-
-        .float-menu {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 8px;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-        }
-
-        .float-menu.open {
-            opacity: 1;
-            pointer-events: all;
-            transform: translateY(0);
-        }
-
-        .float-item {
+            background: #25D366;
+            border-radius: 50px;
             display: flex;
             align-items: center;
             gap: 10px;
+            padding: 14px 22px;
             text-decoration: none;
-            background: white;
-            color: #111;
-            padding: 10px 18px 10px 14px;
-            border-radius: 50px;
-            font-size: 13px;
+            color: white;
             font-weight: 700;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-            transition: all 0.25s;
+            font-size: 14px;
+            box-shadow: 0 8px 24px rgba(37,211,102,0.5);
+            transition: all 0.3s;
+            animation: pulse-wpp 2.5s infinite;
             white-space: nowrap;
         }
 
-        .float-item:hover {
-            transform: translateX(-4px);
-            box-shadow: 0 6px 24px rgba(0,0,0,0.35);
-        }
-
-        .float-item.wpp { background: #25D366; color: white; }
-        .float-item.ig { background: linear-gradient(135deg, #f09433, #dc2743, #bc1888); color: white; }
-
-        .float-item-icon {
-            width: 30px; height: 30px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 16px;
-        }
-
-        .float-main {
-            width: 58px; height: 58px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 6px 24px rgba(201,168,76,0.5);
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s;
-            animation: pulse-gold 2.5s infinite;
-        }
-
-        .float-main:hover {
-            transform: scale(1.1) rotate(15deg);
-            box-shadow: 0 10px 30px rgba(201,168,76,0.6);
-        }
-
-        .float-main.open {
-            transform: rotate(45deg);
-            background: #333;
+        .wpp-float:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(37,211,102,0.65);
             animation: none;
         }
 
-        @keyframes pulse-gold {
-            0%, 100% { box-shadow: 0 6px 24px rgba(201,168,76,0.5); }
-            50% { box-shadow: 0 6px 36px rgba(201,168,76,0.8), 0 0 0 8px rgba(201,168,76,0.1); }
+        .wpp-float-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        @keyframes pulse-wpp {
+            0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,0.5); }
+            50% { box-shadow: 0 8px 36px rgba(37,211,102,0.75), 0 0 0 8px rgba(37,211,102,0.1); }
+        }
+
+        @media (max-width: 480px) {
+            .wpp-float span { display: none; }
+            .wpp-float { border-radius: 50%; padding: 16px; }
         }
 
         /* ── CONVÊNIOS ── */
-        .convenios { background: white; }
+        .convenios { background: white; overflow: hidden; }
 
-        .convenios-wrap {
+        .convenios-aviso {
             display: flex;
             flex-wrap: wrap;
+            gap: 20px;
             justify-content: center;
-            gap: 18px;
+            margin-bottom: 44px;
         }
 
-        .convenio-item {
-            background: var(--off-white);
-            border: 1.5px solid rgba(201,168,76,0.15);
-            border-radius: 12px;
-            padding: 18px 30px;
+        .conv-aviso-card {
+            flex: 1;
+            min-width: 260px;
+            max-width: 420px;
+            border-radius: 14px;
+            padding: 24px 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .conv-aviso-card.hospital {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            border: 1.5px solid rgba(201,168,76,0.3);
+        }
+
+        .conv-aviso-card.particular {
+            background: var(--gold-pale);
+            border: 1.5px solid rgba(201,168,76,0.4);
+        }
+
+        .conv-aviso-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .conv-aviso-card.hospital h4 { color: var(--gold); font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+        .conv-aviso-card.hospital p  { color: rgba(255,255,255,0.65); font-size: 13px; line-height: 1.6; }
+        .conv-aviso-card.particular h4 { color: var(--navy); font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+        .conv-aviso-card.particular p  { color: #4a5a6a; font-size: 13px; line-height: 1.6; }
+
+        /* Carrossel */
+        .carousel-track-wrap {
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .carousel-track-wrap::before,
+        .carousel-track-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 80px;
+            z-index: 2;
+        }
+
+        .carousel-track-wrap::before { left: 0; background: linear-gradient(to right, white, transparent); }
+        .carousel-track-wrap::after  { right: 0; background: linear-gradient(to left, white, transparent); }
+
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            animation: scroll-conv 22s linear infinite;
+            width: max-content;
+        }
+
+        .carousel-track:hover { animation-play-state: paused; }
+
+        @keyframes scroll-conv {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .conv-pill {
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-width: 160px;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 50px;
+            border: 1.5px solid #e8e8e8;
+            background: white;
+            white-space: nowrap;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
             transition: all 0.3s;
+            cursor: default;
         }
 
-        .convenio-item:hover {
+        .conv-pill:hover {
             border-color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(201,168,76,0.15);
+            box-shadow: 0 4px 20px rgba(201,168,76,0.2);
+            transform: translateY(-2px);
         }
 
-        .convenio-item span {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--navy);
-            letter-spacing: 0.05em;
-        }
-
-        .convenio-item .conv-icon {
+        .conv-dot {
             width: 10px; height: 10px;
-            background: var(--gold);
             border-radius: 50%;
-            margin-right: 10px;
             flex-shrink: 0;
+        }
+
+        .conv-pill span {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
         }
 
         .convenios-note {
@@ -712,6 +729,7 @@
             inset: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 45%);
             pointer-events: none;
+            z-index: 1;
         }
 
         .slider-dots {
@@ -758,6 +776,8 @@
             font-size: 12px;
             letter-spacing: 0.06em;
             transition: all 0.3s;
+            z-index: 10;
+            position: relative;
         }
 
         .slider-btn:hover {
@@ -878,16 +898,18 @@
 
         .sintomas-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 18px;
         }
 
         .sintoma-card {
-            background: #111111;
-            border: 1.5px solid rgba(201,168,76,0.2);
+            background: white;
+            border: 1.5px solid #ebebeb;
             border-radius: 14px;
-            padding: 26px 22px;
-            text-align: center;
+            padding: 24px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
             transition: all 0.3s;
             cursor: default;
         }
@@ -895,24 +917,130 @@
         .sintoma-card:hover {
             border-color: var(--gold);
             transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(14,28,46,0.25);
+            box-shadow: 0 12px 28px rgba(201,168,76,0.12);
         }
 
-        .sintoma-icon { font-size: 34px; margin-bottom: 12px; }
+        .sintoma-icon-wrap {
+            width: 46px; height: 46px;
+            border-radius: 11px;
+            background: var(--gold-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
 
-        .sintoma-card h3 {
+        .sintoma-card:hover .sintoma-icon-wrap {
+            background: var(--gold);
+        }
+
+        .sintoma-icon-wrap svg {
+            width: 20px; height: 20px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke 0.3s;
+        }
+
+        .sintoma-card:hover .sintoma-icon-wrap svg { stroke: white; }
+
+        .sintoma-text h3 {
             font-size: 14px;
             font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 8px;
-            letter-spacing: 0.03em;
+            color: var(--navy);
+            margin-bottom: 4px;
         }
 
-        .sintoma-card p {
+        .sintoma-text p {
             font-size: 12.5px;
-            color: rgba(255,255,255,0.55);
+            color: var(--gray);
             line-height: 1.6;
         }
+
+        /* ── MAPA ── */
+        .mapa { background: white; padding: 90px 24px; }
+
+        .mapa-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (min-width: 820px) { .mapa-grid { grid-template-columns: 1fr 1fr; } }
+
+        .mapa-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 28px;
+        }
+
+        .mapa-detalhe {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .mapa-icon {
+            width: 40px; height: 40px;
+            background: var(--gold-pale);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .mapa-icon svg {
+            width: 18px; height: 18px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .mapa-detalhe h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .mapa-detalhe p { font-size: 13.5px; color: #4a5a6a; line-height: 1.6; }
+
+        .mapa-frame {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(201,168,76,0.2);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+            height: 380px;
+        }
+
+        .mapa-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+        .google-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            background: #0a0a0a;
+            color: white;
+            padding: 11px 22px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .google-btn:hover { background: var(--gold); color: #000; transform: translateY(-2px); }
 
         /* ── SOBRE ── */
         .sobre { background: white; }
@@ -1102,6 +1230,114 @@
         .ig-card:hover {
             border-color: var(--gold);
             transform: scale(1.04);
+        }
+
+        /* ── AVALIAÇÕES ── */
+        .avaliacoes { background: var(--off-white); }
+
+        .aval-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .aval-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 24px;
+            border: 1.5px solid #ebebeb;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .aval-card:hover {
+            border-color: rgba(201,168,76,0.35);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(201,168,76,0.1);
+        }
+
+        .aval-card::before {
+            content: '"';
+            position: absolute;
+            top: 16px; right: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 80px;
+            color: rgba(201,168,76,0.1);
+            line-height: 1;
+        }
+
+        .aval-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .aval-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #0a0a0a);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .aval-meta {
+            flex: 1;
+        }
+
+        .aval-meta strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .aval-meta span {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .aval-stars {
+            color: #F5A623;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .aval-card p {
+            font-size: 13.5px;
+            color: #4a5a6a;
+            line-height: 1.75;
+            font-style: italic;
+        }
+
+        .aval-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 16px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gray);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .aval-badge::before {
+            content: 'G';
+            width: 18px; height: 18px;
+            background: #4285F4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 900;
         }
 
         /* ── FAQ ── */
@@ -1302,22 +1538,37 @@
             position: fixed;
             bottom: 28px; right: 28px;
             z-index: 999;
-            width: 58px; height: 58px;
             background: #25D366;
-            border-radius: 50%;
+            border-radius: 50px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            box-shadow: 0 8px 24px rgba(37,211,102,0.5);
+            gap: 10px;
+            padding: 14px 22px;
             text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 8px 24px rgba(37,211,102,0.5);
             transition: all 0.3s;
             animation: pulse-wpp 2s infinite;
+            white-space: nowrap;
         }
 
         .wpp-float:hover {
-            transform: scale(1.1);
+            transform: translateY(-3px);
             box-shadow: 0 12px 32px rgba(37,211,102,0.6);
+            animation: none;
+        }
+
+        .wpp-float svg {
+            width: 22px; height: 22px;
+            fill: white;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 480px) {
+            .wpp-float span { display: none; }
+            .wpp-float { border-radius: 50%; padding: 16px; }
         }
 
         @keyframes pulse-wpp {
@@ -1338,14 +1589,14 @@
 
 <!-- Barra topo -->
 <div class="header-bar">
-    📍 Atendimento em Goiânia–GO &nbsp;|&nbsp; <strong>(62) 99978-1029</strong> &nbsp;|&nbsp; Seg–Sex: 8h–18h &nbsp; Sáb: 9h–13h
+    📍 Atendimento em Goiânia–GO &nbsp;|&nbsp; <strong>(62) 99434-2977</strong> &nbsp;|&nbsp; Seg–Sex: 8h–18h &nbsp; Sáb: 9h–13h
 </div>
 
 <!-- Header -->
 <header>
     <div class="header-inner">
         <a href="#" class="logo">
-            <div class="logo-mark">LA</div>
+            <div class="logo-mark">DL</div>
             <div class="logo-text">
                 <h1>DRA. LORRAINE ASSIS</h1>
                 <p>Cirurgia Bucomaxilofacial</p>
@@ -1356,8 +1607,9 @@
             <a href="#convenios">Convênios</a>
             <a href="#resultados">Resultados</a>
             <a href="#sobre">Sobre</a>
+            <a href="#localizacao">Localização</a>
             <a href="#faq">FAQ</a>
-            <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-wpp">💬 Agendar</a>
+            <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-wpp">💬 Agendar</a>
         </nav>
     </div>
 </header>
@@ -1367,24 +1619,24 @@
     <div class="hero-grid container">
         <div class="hero-left">
             <div class="hero-eyebrow">Cirurgia Bucomaxilofacial · Goiânia</div>
-            <h1>Harmonia Facial &<br><em>Qualidade de Vida</em></h1>
-            <p class="hero-desc">Procedimentos cirúrgicos precisos e personalizados que combinam estética, função e bem-estar. Respire, mastigue e sorria com mais conforto.</p>
+            <h1>Cirurgia &<br><em>Traumatologia Bucomaxilofacial</em></h1>
+            <p class="hero-desc">Restaure sua qualidade de vida e renove sua autoestima através da Cirurgia Bucomaxilofacial. Procedimentos precisos e personalizados que combinam estética, função e bem-estar.</p>
             <div class="hero-actions">
-                <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-primary">💬 AGENDAR CONSULTA</a>
+                <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-primary">💬 AGENDAR CONSULTA</a>
                 <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="btn-outline">📸 Ver Resultados</a>
             </div>
             <div class="hero-stats">
                 <div class="stat-item">
+                    <div class="stat-num">5,0</div>
+                    <div class="stat-label">⭐ Google · 39 avaliações</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">HC</div>
+                    <div class="stat-label">Residência UFG Federal</div>
+                </div>
+                <div class="stat-item">
                     <div class="stat-num">100%</div>
                     <div class="stat-label">Avaliações positivas</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num">UFG</div>
-                    <div class="stat-label">Graduação Federal</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num">+6</div>
-                    <div class="stat-label">Anos de especialização</div>
                 </div>
             </div>
         </div>
@@ -1393,8 +1645,8 @@
                 <img src="foto-dra.jpg" alt="Dra. Lorraine Assis - Cirurgiã Bucomaxilofacial">
             </div>
             <div class="hero-badge">
-                <span>★★★★★</span>
-                Cirurgiã Bucomaxilofacial<br>CRO-GO
+                <span>5,0 ★</span>
+                39 avaliações<br>Google Maps
             </div>
             <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="hero-ig">
                 📸 @dra.lorrainebucomaxilo
@@ -1409,7 +1661,7 @@
         <div class="sec-header light">
             <span class="sec-eyebrow">O que tratamos</span>
             <h2>Nossas Especialidades</h2>
-            <p>Procedimentos avançados para harmonia facial, saúde bucal e qualidade de vida</p>
+            <p>Procedimentos cirúrgicos avançados para saúde bucal, função e qualidade de vida</p>
         </div>
     </div>
     <div class="esp-grid">
@@ -1420,7 +1672,7 @@
             <div class="esp-card-content">
                 <div class="esp-card-num">01 — CIRURGIA</div>
                 <h3>Cirurgia Ortognática</h3>
-                <p>Você sente dificuldade para morder, falar ou respirar corretamente? Esse procedimento corrige alterações ósseas no maxilar e mandíbula, melhorando a função mastigatória, a harmonia facial e a qualidade de vida.</p>
+                <p>Você sente dificuldade para morder, falar ou respirar corretamente? Esse procedimento corrige alterações ósseas no maxilar e mandíbula, melhorando a função mastigatória, a estética facial e a qualidade de vida.</p>
             </div>
         </div>
         <div class="esp-card">
@@ -1470,7 +1722,17 @@
             <div class="esp-card-content">
                 <div class="esp-card-num">06 — ESTÉTICA</div>
                 <h3>Procedimentos Estéticos</h3>
-                <p>Harmonização facial com implantes e correções de assimetrias para um resultado natural e equilibrado.</p>
+                <p>Correções de assimetrias e procedimentos estéticos faciais com resultado natural e equilibrado.</p>
+            </div>
+        </div>
+        <div class="esp-card">
+            <img class="esp-card-img" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Lipo Papada">
+            <div class="esp-card-overlay"></div>
+            <div class="esp-card-tag">Especialidade</div>
+            <div class="esp-card-content">
+                <div class="esp-card-num">07 — ESTÉTICA</div>
+                <h3>Lipo Papada</h3>
+                <p>Procedimento minimamente invasivo para remoção de gordura localizada na região da papada, definindo o contorno facial e o pescoço com resultado natural.</p>
             </div>
         </div>
     </div>
@@ -1482,19 +1744,55 @@
         <div class="sec-header">
             <span class="sec-eyebrow">Planos aceitos</span>
             <h2>Convênios</h2>
-            <p>Atendemos os principais planos de saúde para facilitar o seu acesso ao tratamento</p>
+            <p>Atendimento hospitalar pelos principais planos de saúde</p>
         </div>
-        <div class="convenios-wrap">
-            <div class="convenio-item"><div class="conv-icon"></div><span>Bradesco Saúde</span></div>
-            <div class="convenio-item"><div class="conv-icon"></div><span>Unimed</span></div>
-            <div class="convenio-item"><div class="conv-icon"></div><span>Amil</span></div>
-            <div class="convenio-item"><div class="conv-icon"></div><span>SulAmérica</span></div>
-            <div class="convenio-item"><div class="conv-icon"></div><span>Hapvida</span></div>
-            <div class="convenio-item"><div class="conv-icon"></div><span>Mediplan</span></div>
-            <div class="convenio-item"><div class="conv-icon"></div><span>Particular</span></div>
+
+        <!-- Cards explicativos -->
+        <div class="convenios-aviso">
+            <div class="conv-aviso-card hospital">
+                <div class="conv-aviso-icon">🏥</div>
+                <div>
+                    <h4>Cirurgias em Ambiente Hospitalar</h4>
+                    <p>Todos os procedimentos cirúrgicos são realizados em hospital conveniado. Aceitamos os principais planos de saúde, incluindo Unimed, Bradesco, IMAS, IPASGO, Amil, SulAmérica, Mediplan e outros.</p>
+                </div>
+            </div>
+            <div class="conv-aviso-card particular">
+                <div class="conv-aviso-icon">🦷</div>
+                <div>
+                    <h4>Consultas no Consultório</h4>
+                    <p>As consultas e avaliações são realizadas de forma particular, com atendimento personalizado e agendamento direto pelo WhatsApp.</p>
+                </div>
+            </div>
         </div>
+
+        <!-- Carrossel animado -->
+        <div class="carousel-track-wrap">
+            <div class="carousel-track">
+                <!-- Primeira vez -->
+                <div class="conv-pill"><div class="conv-dot" style="background:#cc092f"></div><span style="color:#cc092f">Bradesco Saúde</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#00843d"></div><span style="color:#00843d">Unimed</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#003DA5"></div><span style="color:#003DA5">IPASGO</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#e30613"></div><span style="color:#e30613">IMAS</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#0057a8"></div><span style="color:#0057a8">Amil</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#e8700a"></div><span style="color:#e8700a">SulAmérica</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#7b2d8b"></div><span style="color:#7b2d8b">Hapvida*</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#C9A84C"></div><span style="color:#C9A84C">Mediplan</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#444"></div><span style="color:#444">Particular</span></div>
+                <!-- Duplicado para loop infinito -->
+                <div class="conv-pill"><div class="conv-dot" style="background:#cc092f"></div><span style="color:#cc092f">Bradesco Saúde</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#00843d"></div><span style="color:#00843d">Unimed</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#003DA5"></div><span style="color:#003DA5">IPASGO</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#e30613"></div><span style="color:#e30613">IMAS</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#0057a8"></div><span style="color:#0057a8">Amil</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#e8700a"></div><span style="color:#e8700a">SulAmérica</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#7b2d8b"></div><span style="color:#7b2d8b">Hapvida*</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#C9A84C"></div><span style="color:#C9A84C">Mediplan</span></div>
+                <div class="conv-pill"><div class="conv-dot" style="background:#444"></div><span style="color:#444">Particular</span></div>
+            </div>
+        </div>
+
         <p class="convenios-note">
-            Dúvidas sobre cobertura? <a href="https://wa.me/5562999781029?text=Olá,%20gostaria%20de%20saber%20se%20meu%20plano%20é%20aceito">Consulte pelo WhatsApp →</a>
+            *Hapvida não é aceito em ambiente hospitalar. &nbsp;|&nbsp; Dúvidas sobre cobertura? <a href="https://wa.me/556294342977?text=Olá,%20gostaria%20de%20saber%20se%20meu%20plano%20é%20aceito">Consulte pelo WhatsApp →</a>
         </p>
     </div>
 </section>
@@ -1574,7 +1872,7 @@
 
                 <div class="caso-cta">
                     <p>"Reconstruindo faces. Reconstruindo vidas."</p>
-                    <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vi%20o%20caso%20clínico%20no%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação" class="btn-primary">
+                    <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vi%20o%20caso%20clínico%20no%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação" class="btn-primary">
                         💬 Me identifico com este caso
                     </a>
                 </div>
@@ -1592,14 +1890,157 @@
             <p>Estes sinais podem indicar a necessidade de uma avaliação bucomaxilofacial</p>
         </div>
         <div class="sintomas-grid">
-            <div class="sintoma-card"><div class="sintoma-icon">😣</div><h3>Dor Facial</h3><p>Desconforto na mandíbula, bochechas ou articulação.</p></div>
-            <div class="sintoma-card"><div class="sintoma-icon">🦷</div><h3>Mordida Desalinhada</h3><p>Mandíbula projetada, retraída ou mordida cruzada.</p></div>
-            <div class="sintoma-card"><div class="sintoma-icon">🍽️</div><h3>Dificuldade Mastigar</h3><p>Problemas ao mastigar alimentos ou falar.</p></div>
-            <div class="sintoma-card"><div class="sintoma-icon">🔊</div><h3>Ruídos Articulares</h3><p>Estalos, cliques ou crepitações na mandíbula.</p></div>
-            <div class="sintoma-card"><div class="sintoma-icon">😮</div><h3>Limitação Abertura</h3><p>Dificuldade para abrir a boca completamente.</p></div>
-            <div class="sintoma-card"><div class="sintoma-icon">🤕</div><h3>Dores de Cabeça</h3><p>Cefaleias frequentes relacionadas à ATM.</p></div>
-            <div class="sintoma-card"><div class="sintoma-icon">😴</div><h3>Ronco / Apneia</h3><p>Ronco noturno ou pausas na respiração.</p></div>
-            <div class="sintoma-card"><div class="sintoma-icon">😬</div><h3>Bruxismo</h3><p>Ranger ou apertar os dentes durante a noite.</p></div>
+
+            <div class="sintoma-card">
+                <div class="sintoma-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 3.5-2.5 6.5-5 8.5V19a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1.5C7.5 15.5 5 12.5 5 9a7 7 0 0 1 7-7z"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                </div>
+                <div class="sintoma-text">
+                    <h3>Dor Facial</h3>
+                    <p>Desconforto na mandíbula, bochechas ou articulação temporomandibular.</p>
+                </div>
+            </div>
+
+            <div class="sintoma-card">
+                <div class="sintoma-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><path d="M7 11 Q12 8 17 11"/></svg>
+                </div>
+                <div class="sintoma-text">
+                    <h3>Mordida Desalinhada</h3>
+                    <p>Mandíbula projetada, retraída ou mordida cruzada afetando função e estética facial.</p>
+                </div>
+            </div>
+
+            <div class="sintoma-card">
+                <div class="sintoma-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+                </div>
+                <div class="sintoma-text">
+                    <h3>Dificuldade ao Mastigar</h3>
+                    <p>Problemas ao mastigar alimentos ou falar com clareza.</p>
+                </div>
+            </div>
+
+            <div class="sintoma-card">
+                <div class="sintoma-icon-wrap">
+                    <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                </div>
+                <div class="sintoma-text">
+                    <h3>Ruídos Articulares</h3>
+                    <p>Estalos, cliques ou crepitações ao abrir ou fechar a boca.</p>
+                </div>
+            </div>
+
+            <div class="sintoma-card">
+                <div class="sintoma-icon-wrap">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <div class="sintoma-text">
+                    <h3>Limitação de Abertura</h3>
+                    <p>Dificuldade para abrir completamente a boca ou bocejar.</p>
+                </div>
+            </div>
+
+            <div class="sintoma-card">
+                <div class="sintoma-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M9 12h.01M15 12h.01M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M8 9.05v-.1M16 9.05v-.1"/><path d="M12 17c-2 0-3.5-1-4-2.5"/></svg>
+                </div>
+                <div class="sintoma-text">
+                    <h3>Dores de Cabeça</h3>
+                    <p>Cefaleias frequentes relacionadas à tensão na ATM.</p>
+                </div>
+            </div>
+
+            <div class="sintoma-card">
+                <div class="sintoma-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>
+                </div>
+                <div class="sintoma-text">
+                    <h3>Ronco / Apneia</h3>
+                    <p>Ronco noturno ou pausas na respiração durante o sono.</p>
+                </div>
+            </div>
+
+            <div class="sintoma-card">
+                <div class="sintoma-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="sintoma-text">
+                    <h3>Bruxismo</h3>
+                    <p>Ranger ou apertar os dentes causando desgaste e dores musculares.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Mapa / Localização -->
+<section class="mapa" id="localizacao">
+    <div class="container">
+        <div class="sec-header">
+            <span class="sec-eyebrow">Onde nos encontrar</span>
+            <h2>Localização do Consultório</h2>
+            <p>Atendimento em Goiânia com fácil acesso e estacionamento</p>
+        </div>
+        <div class="mapa-grid">
+            <div class="mapa-info">
+                <h3>Dra. Lorraine Assis<br>Bucomaxilofacial</h3>
+
+                <div class="mapa-detalhe">
+                    <div class="mapa-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                        <h4>Endereço</h4>
+                        <p>Goiânia — GO<br>Brasil</p>
+                    </div>
+                </div>
+
+                <div class="mapa-detalhe">
+                    <div class="mapa-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Telefone</h4>
+                        <p>(62) 99434-2977</p>
+                    </div>
+                </div>
+
+                <div class="mapa-detalhe">
+                    <div class="mapa-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div>
+                        <h4>Horários</h4>
+                        <p>Segunda a Sexta: 8h às 18h<br>Sábado: 9h às 13h</p>
+                    </div>
+                </div>
+
+                <div class="mapa-detalhe">
+                    <div class="mapa-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Avaliação Google</h4>
+                        <p>⭐ 5,0 — 39 avaliações</p>
+                    </div>
+                </div>
+
+                <a href="https://maps.app.goo.gl/Kf85dryUPH2oGx9v8" target="_blank" class="google-btn">
+                    📍 Abrir no Google Maps
+                </a>
+            </div>
+
+            <div class="mapa-frame">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3823.4!2d-49.2651!3d-16.6648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ef1a1a1a1a1a1%3A0x1a1a1a1a1a1a1a1a!2sDra.%20Lorraine%20Assis%20Bucomaxilofacial!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Localização Dra. Lorraine Assis">
+                </iframe>
+            </div>
         </div>
     </div>
 </section>
@@ -1618,13 +2059,14 @@
                 <div class="sobre-eyebrow">Conheça a especialista</div>
                 <h2>Dra. Lorraine Assis</h2>
                 <h3>Cirurgiã e Traumatologista Bucomaxilofacial · CRO-GO</h3>
-                <p>Graduada em Odontologia pela <strong>Universidade Federal de Goiás (UFG)</strong>, com especialização em Cirurgia e Traumatologia Bucomaxilofacial e sólida experiência em procedimentos ortognáticos, estéticos e funcionais da face.</p>
-                <p>Atua com foco em precisão cirúrgica, tecnologia avançada e atenção personalizada, sempre respeitando a individualidade e os objetivos de cada paciente.</p>
+                <p>Graduada em Odontologia pela <strong>Universidade Federal de Goiás (UFG)</strong> e com Residência em Cirurgia e Traumatologia Bucomaxilofacial pelo <strong>Hospital das Clínicas da UFG (HC-UFG)</strong> — uma das formações mais rigorosas e competitivas da especialidade no Brasil.</p>
+                <p>Especialista em cirurgia ortognática, DTM, extração de sisos e lipo de papada, com foco em precisão cirúrgica, tecnologia avançada e atenção personalizada a cada paciente.</p>
                 <p>Comprometida com a atualização contínua, participando de congressos nacionais e internacionais para oferecer o que há de mais moderno na especialidade.</p>
                 <div class="sobre-badges">
+                    <span class="badge">⭐ 5,0 · 39 avaliações Google</span>
+                    <span class="badge">Residência HC-UFG</span>
+                    <span class="badge">Graduação UFG Federal</span>
                     <span class="badge">100% Avaliações positivas</span>
-                    <span class="badge">Formação UFG</span>
-                    <span class="badge">Tecnologia avançada</span>
                 </div>
             </div>
         </div>
@@ -1632,6 +2074,103 @@
 </section>
 
 
+
+<!-- Avaliações -->
+<section class="avaliacoes" id="avaliacoes">
+    <div class="container">
+        <div class="sec-header">
+            <span class="sec-eyebrow">O que dizem os pacientes</span>
+            <h2>Avaliações no Google</h2>
+            <p>⭐ 5,0 — 39 avaliações verificadas</p>
+        </div>
+        <div class="aval-grid">
+
+            <div class="aval-card">
+                <div class="aval-header">
+                    <div class="aval-avatar">RA</div>
+                    <div class="aval-meta">
+                        <strong>Richardson Alves</strong>
+                        <span>uma semana atrás</span>
+                    </div>
+                    <div class="aval-stars">★★★★★</div>
+                </div>
+                <p>"Ótimo atendimento, retirei 3 sisos e foi bastante tranquila a cirurgia, apesar de ser considerada complexa. Ela utiliza medicamentos antes da operação em prol de uma cirurgia tranquila. Dra. Lorraine é bastante atenciosa no pós operatório, gostei bastante."</p>
+                <div class="aval-badge">Google</div>
+            </div>
+
+            <div class="aval-card">
+                <div class="aval-header">
+                    <div class="aval-avatar">LV</div>
+                    <div class="aval-meta">
+                        <strong>Luan Vítor</strong>
+                        <span>um mês atrás</span>
+                    </div>
+                    <div class="aval-stars">★★★★★</div>
+                </div>
+                <p>"Tive um problema na região da ATM que me causava bastante desconforto, mas a dentista conduziu tudo com muita competência e o problema foi totalmente resolvido. Profissional atenciosa, segura no que faz e muito cuidadosa com o paciente. Recomendo fortemente!"</p>
+                <div class="aval-badge">Google</div>
+            </div>
+
+            <div class="aval-card">
+                <div class="aval-header">
+                    <div class="aval-avatar">EO</div>
+                    <div class="aval-meta">
+                        <strong>Emanoelle Ozano</strong>
+                        <span>3 semanas atrás</span>
+                    </div>
+                    <div class="aval-stars">★★★★★</div>
+                </div>
+                <p>"Realizei a extração dos meus 4 sisos em posição complexa próximos ao nervo. A cirurgia foi tranquila, um verdadeiro sucesso. A Dra. Lorraine faz um acompanhamento completo: antes, durante e pós operatório. Quase não inchei ou tive dores. Recomendo demais!"</p>
+                <div class="aval-badge">Google</div>
+            </div>
+
+            <div class="aval-card">
+                <div class="aval-header">
+                    <div class="aval-avatar">MK</div>
+                    <div class="aval-meta">
+                        <strong>Maria Klara De Oliveira Guimarães</strong>
+                        <span>2 meses atrás</span>
+                    </div>
+                    <div class="aval-stars">★★★★★</div>
+                </div>
+                <p>"Atendimento exemplar, fiz a cirurgia sem preocupação alguma, ultrapassou as minhas expectativas. Foi um procedimento bem tranquilo e o pós operatório está sendo ótimo, não estou sentindo dores. Recomendo muito, Bucomaxilofacial Dra. Lorraine Assis."</p>
+                <div class="aval-badge">Google</div>
+            </div>
+
+            <div class="aval-card">
+                <div class="aval-header">
+                    <div class="aval-avatar">MC</div>
+                    <div class="aval-meta">
+                        <strong>Mariana Costa</strong>
+                        <span>2 meses atrás</span>
+                    </div>
+                    <div class="aval-stars">★★★★★</div>
+                </div>
+                <p>"A Dra. Lorraine fez extração de sisos inclusos próximos aos nervos. Após 24hrs não sinto nada de dor, pouquíssimo inchaço. Atendimento impecável, ambiente com músicas relaxantes, ela respeita o paciente em todos os sentidos. Acreditem, melhor cirurgiã que conheci!"</p>
+                <div class="aval-badge">Google</div>
+            </div>
+
+            <div class="aval-card">
+                <div class="aval-header">
+                    <div class="aval-avatar">NG</div>
+                    <div class="aval-meta">
+                        <strong>Nathane Gabrielly Medeiros</strong>
+                        <span>um mês atrás</span>
+                    </div>
+                    <div class="aval-stars">★★★★★</div>
+                </div>
+                <p>"A Dra. Lorraine realizou uma cirurgia de siso próximo ao nervo, pós operatório foi tranquilo e sem complicações! Uma excelente profissional e bem atenciosa, eu super recomendo."</p>
+                <div class="aval-badge">Google</div>
+            </div>
+
+        </div>
+        <div style="text-align:center; margin-top: 40px;">
+            <a href="https://maps.app.goo.gl/Kf85dryUPH2oGx9v8" target="_blank" class="google-btn">
+                ⭐ Ver todas as avaliações no Google
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- FAQ -->
 <section class="faq" id="faq">
@@ -1674,7 +2213,21 @@
                     <span>A cirurgia é coberta por planos de saúde?</span>
                     <div class="faq-arrow">▼</div>
                 </div>
-                <div class="faq-a">A cobertura depende do plano e da indicação médica. A Dra. Lorraine trabalha com os principais convênios e pode orientar sobre a documentação necessária para autorização.</div>
+                <div class="faq-a">A cobertura depende do plano e da indicação médica. A Dra. Lorraine realiza cirurgias em ambiente hospitalar pelos principais convênios (Unimed, Bradesco, IMAS, IPASGO e outros). As consultas de avaliação no consultório são realizadas de forma particular.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>A extração de sisos é perigosa?</span>
+                    <div class="faq-arrow">▼</div>
+                </div>
+                <div class="faq-a">Quando realizada por um especialista bucomaxilofacial, a extração é segura e minimamente invasiva. A Dra. Lorraine utiliza protocolos anestésicos modernos para garantir o máximo conforto, mesmo nos casos próximos ao nervo.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>Como funciona a Lipo Papada?</span>
+                    <div class="faq-arrow">▼</div>
+                </div>
+                <div class="faq-a">É um procedimento minimamente invasivo, realizado com anestesia local, que remove a gordura localizada na região do queixo e pescoço. O resultado é um contorno facial mais definido, com recuperação rápida e cicatrizes imperceptíveis.</div>
             </div>
         </div>
     </div>
@@ -1684,9 +2237,9 @@
 <section class="cta-final">
     <div class="container">
         <h2>Agende Sua Avaliação</h2>
-        <p>Dê o primeiro passo para transformar sua harmonia facial e qualidade de vida. Consulta personalizada com a Dra. Lorraine.</p>
+        <p>Dê o primeiro passo para cuidar da sua saúde bucomaxilofacial e qualidade de vida. Consulta personalizada com a Dra. Lorraine.</p>
         <div class="cta-btns">
-            <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-primary">💬 AGENDAR PELO WHATSAPP</a>
+            <a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" class="btn-primary">💬 AGENDAR PELO WHATSAPP</a>
             <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="btn-outline">📸 Ver no Instagram</a>
         </div>
     </div>
@@ -1697,16 +2250,16 @@
     <div class="footer-grid">
         <div class="footer-brand">
             <a href="#" class="logo">
-                <div class="logo-mark">LA</div>
+                <div class="logo-mark">DL</div>
                 <div class="logo-text">
                     <h1 style="color:white">DRA. LORRAINE ASSIS</h1>
                     <p>Cirurgia Bucomaxilofacial</p>
                 </div>
             </a>
-            <p>Cirurgiã e Traumatologista Bucomaxilofacial especializada em harmonia facial e qualidade de vida em Goiânia–GO.</p>
+            <p>Cirurgiã e Traumatologista Bucomaxilofacial especializada em Cirurgia e Traumatologia Bucomaxilofacial em Goiânia–GO.</p>
             <div class="social-links">
                 <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="social-link" title="Instagram">📸</a>
-                <a href="https://wa.me/5562999781029" target="_blank" class="social-link" title="WhatsApp">💬</a>
+                <a href="https://wa.me/556294342977" target="_blank" class="social-link" title="WhatsApp">💬</a>
             </div>
         </div>
         <div class="footer-col">
@@ -1719,8 +2272,8 @@
         </div>
         <div class="footer-col">
             <h4>Contato</h4>
-            <p><strong style="color:rgba(255,255,255,0.7)">(62) 99978-1029</strong></p>
-            <p>dra.lorrainebucomaxilo<br>@gmail.com</p>
+            <p><strong style="color:rgba(255,255,255,0.7)">(62) 99434-2977</strong></p>
+            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0d4c2d19edcdfc2c2d1d9ded5d2c5d3dfddd1c8d9dcdcf0d7ddd1d9dc9ed3dfdd">[email&#160;protected]</a></p>
             <p>Goiânia, GO</p>
         </div>
         <div class="footer-col">
@@ -1734,60 +2287,32 @@
     </div>
 </footer>
 
-<!-- Botão Flutuante -->
-<div class="float-actions">
-    <div class="float-menu" id="floatMenu">
-        <a href="https://wa.me/5562999781029?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" target="_blank" class="float-item wpp">
-            <div class="float-item-icon">💬</div>
-            Agendar pelo WhatsApp
-        </a>
-        <a href="https://www.instagram.com/dra.lorrainebucomaxilo/" target="_blank" class="float-item ig">
-            <div class="float-item-icon">📸</div>
-            Ver no Instagram
-        </a>
-    </div>
-    <button class="float-main" id="floatBtn" onclick="toggleFloat()">✚</button>
-</div>
+<!-- Botão Flutuante WhatsApp -->
+<a href="https://wa.me/556294342977?text=Olá%20Dra.%20Lorraine,%20vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta" target="_blank" class="wpp-float">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>Agendar consulta</span>
+</a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     let currentSlide = 0;
     const slides = ['resultado1.jpg', 'resultado2.jpg', 'resultado3.jpg'];
 
     function showSlide(index) {
-        currentSlide = index;
+        currentSlide = (index + slides.length) % slides.length;
         const img = document.getElementById('sliderImage');
         img.style.opacity = '0';
         setTimeout(() => {
             img.src = slides[currentSlide];
-            img.style.opacity = '1';
-        }, 200);
+            img.onload = () => { img.style.opacity = '1'; };
+            // fallback se imagem já estiver cacheada
+            if (img.complete) img.style.opacity = '1';
+        }, 300);
         document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
         document.querySelectorAll('.slide-thumb').forEach((t, i) => t.classList.toggle('active', i === currentSlide));
     }
 
-    function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
-    function previousSlide() { showSlide((currentSlide - 1 + slides.length) % slides.length); }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function previousSlide() { showSlide(currentSlide - 1); }
 
-    function toggleFloat() {
-        const btn = document.getElementById('floatBtn');
-        const menu = document.getElementById('floatMenu');
-        btn.classList.toggle('open');
-        menu.classList.toggle('open');
-    }
-
-    // Fechar ao clicar fora
-    document.addEventListener('click', function(e) {
-        const fa = document.querySelector('.float-actions');
-        if (!fa.contains(e.target)) {
-            document.getElementById('floatBtn').classList.remove('open');
-            document.getElementById('floatMenu').classList.remove('open');
-        }
-    });
-        const item = el.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-    }
-</script>
-</body>
-</html>
+    function toggleFaq(el) {
+        const item = el.par
